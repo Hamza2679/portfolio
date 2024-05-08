@@ -39,15 +39,15 @@
 	</section>
 	<section class="about" id ="about">
 		<div class="abou-img">
-			<img src='img/languages.jpg'>
+			<img src='img/edited.png'>
 		</div>
 		<div class="about-text">
 			<h2>About<span>Me</span></h2>
 			<h4>Software developer</h4>
 			<p>Hi there! I'm Hamza musema, a passionate software developer with 5 years of experience specializing in web and app development.
-				 I thrive on the challenges of technology, approaching problems with a blend of analytical thinking and creativity. constantly learning and adapting to new tools and methodologies. 
-				 I'm committed to delivering high-quality solutions that exceed expectations and am always eager to explore new opportunities for growth and collaboration.
-				  Let's connect and explore how we can work together to achieve your goals!.</p>
+				I thrive on the challenges of technology, approaching problems with a blend of analytical thinking and creativity. constantly learning and adapting to new tools and methodologies. 
+				I'm committed to delivering high-quality solutions that exceed expectations and am always eager to explore new opportunities for growth and collaboration.
+				Let's connect and explore how we can work together to achieve your goals!.</p>
 				<a href="#" class="btn">More About</a>
 		</div>
 	</section>
@@ -143,6 +143,7 @@
 			</div>
 		</div>
 	</section>
+	
 	<section class="contact" id="contact">
 		<div class="contact-text">
 			<h2>Contact<span>Me</span></h2>
@@ -161,15 +162,47 @@
 			</div>
 		</div>
 		<div class="contact-form">
-			<form action="">
-				<input type="name" placeholder="your name" required>
-				<input type="email" placeholder="your email" required>
-				<input type="number" placeholder="your phone number" required>
-				<textarea name="" id="" cols="35" rows="18" placeholder="How can I help you" required></textarea>
-				<input type="submit" value="Send messages" class="submit" required>
-			</form>
+		  <form id="contactForm">
+			<input type="text" id="name" placeholder="Your Name" required>
+			<input type="email" id="email" placeholder="Your Email" required>
+			<textarea id="message" cols="35" rows="8" placeholder="Your Message" required></textarea>
+			<input type="submit" value="Send Message" class="submit">
+		  </form>
 		</div>
-	</section>
+	  </section>
+	
+	  <div class="message-container" id="messageContainer"></div>
+    </div>
+  </section>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    emailjs.init("s1NJbpRsX98iZmwpQ"); // Replace YOUR_USER_ID with your EmailJS user ID
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get input values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      // Send email
+      emailjs.send("service_qtvxz3p", "template_mhg5ozw", {
+        name,
+        email,
+        message
+      }).then(function(response) {
+        console.log('Email sent successfully:', response);
+		alert('Your message has been sent successfully!');
+        // Clear form fields
+        document.getElementById('contactForm').reset();
+      }, function(error) {
+        console.error('Email sending failed:', error);
+		alert('An error occurred while sending your message. Please try again later.');
+      });
+    });
+  </script>
 	<section class="end">
 		<div class="last-text">
 			<p>Design By hamusa</p>

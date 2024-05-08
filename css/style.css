@@ -150,7 +150,7 @@ section {
   gap: 1.5rem;
 }
 .about-img img {
-  max-width: 530px;
+  max-width: 200px;
   height: auto;
   width: 100%;
   border-radius: 5px;
@@ -299,6 +299,8 @@ section {
 .contact-text h2 {
   font-size: var(--h2-font);
   line-height: 1;
+  margin-top: 10px;
+  margin-left: 70px;
 }
 .contact-text p {
   color: var(--second-color);
