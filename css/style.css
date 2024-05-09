@@ -379,8 +379,8 @@ section {
     transform: translateY(5px);
 }
 .lala{
-  margin-top: 40px;
-  margin-right: 20px;
+    margin-top: 40px;
+    margin-right: 20px;
 }
 .contact-icon i {
     margin-top: 40px;
@@ -471,7 +471,7 @@ form textarea {
     }
 
     section {
-        padding: 110px 3% 60px;
+        padding: 170px 3% 60px;
     }
 
     .end {
@@ -488,15 +488,20 @@ form textarea {
     }
 
     .home-text h3 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
 
     .home {
-        height: 87vh;
+        height: 110vh;
     }
+    .contact-icon i {
+        width: 10px;
+        margin-right: 10px;
+    }
+    
 }
 
-@media (max-width: 920) {
+@media (max-width: 920px) {
     .about {
         grid-template-columns: 1fr;
     }
@@ -513,7 +518,7 @@ form textarea {
 }
 
 @media (max-width: 480px) {
-    menu-icon {
+    #menu-icon {
         display: block;
     }
 
@@ -541,7 +546,7 @@ form textarea {
         color: var(--main-color);
     }
 
-    navlist a.active {
+    .navlist a.active {
         color: var(--text-color);
     }
 
