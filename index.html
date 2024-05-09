@@ -5,14 +5,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>personal portfolio</title>
-	<!---custom css link---->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 <bod>
 	<header>
-		<a href="#" class="logo" >Hamza.<span>dev</span></a>
+		<a href="#" class="logo" >Portfolio<span>..</span></a>
 		<ul class="navlist" id ="sidemenue">
 			<li><a href="#home">Home</a></li>
 			<li><a href="#about">About</a></li>
@@ -40,7 +39,7 @@
 			</div>
 			<h1>Hamza </h1>
 			<h3>I`m a Software<span>Developer</span></h3>
-			<p>A computer since and engineering student @ Adam since and technology university (Astu).
+			<p>A computer science and engineering student<br> @ Adam science and technology university (Astu).
 			<br>A passionate Software Developer.</p>
 			<div class="button">
 				<a href="https://drive.google.com/file/d/1m0iQdFdmMi_DRCVK7Oxq7IU7bP37XHX3/view?usp=drive_link" class="btn">View cv</a>
@@ -68,7 +67,7 @@
 				I thrive on the challenges of technology, approaching problems with a blend of analytical thinking and creativity. constantly learning and adapting to new tools and methodologies. 
 				I'm committed to delivering high-quality solutions that exceed expectations and am always eager to explore new opportunities for growth and collaboration.
 				Let's connect and explore how we can work together to achieve your goals!.</p>
-				<a href="#" class="btn">More About</a>
+				<a href="https://docs.google.com/document/d/1oFscT2sv82q4QG6l0yKua86i2vCUtVKx/edit?usp=sharing&ouid=102047646414527223848&rtpof=true&sd=true" class="btn">More About</a>
 		</div>
 	</section>
 	<section class="services" id="services">
@@ -176,12 +175,10 @@
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    emailjs.init("s1NJbpRsX98iZmwpQ"); // Replace YOUR_USER_ID with your EmailJS user ID
+    emailjs.init("s1NJbpRsX98iZmwpQ"); 
 
     document.getElementById('contactForm').addEventListener('submit', function(event) {
       event.preventDefault();
-
-      // Get input values
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const message = document.getElementById('message').value;
@@ -194,7 +191,6 @@
       }).then(function(response) {
         console.log('Email sent successfully:', response);
 		alert('Your message has been sent successfully!');
-        // Clear form fields
         document.getElementById('contactForm').reset();
       }, function(error) {
         console.error('Email sending failed:', error);

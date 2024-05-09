@@ -46,6 +46,7 @@ header {
     font-size: 35px;
     font-weight: 700;
     letter-spacing: 1px;
+    margin-right: 30px;
 }
 
 span {
@@ -497,7 +498,7 @@ form textarea {
     }
 
     .home {
-        height: 110vh;
+        height: 95vh;
     }
     .contact-icon i {
         width: 10px;
@@ -526,6 +527,7 @@ form textarea {
     #menu-icon {
         display:contents;
         font-size: 25px;
+        margin-left: 100px;
     }
     .navlist a .bx-arrow-back{
         display: block;
