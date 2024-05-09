@@ -155,6 +155,7 @@ section {
     background: var(--main-color);
     border-radius: 5px;
     color: var(--text-color);
+    margin-top: 10px;
     font-size: 1rem;
     letter-spacing: 1px;
     font-weight: 500;
@@ -464,6 +465,10 @@ form textarea {
     color: #007bff;
 }
 
+.navlist .bx-arrow-back{
+    display: none;
+}
+
 @media (max-width: 1480px) {
     header {
         padding: 12px 2.5%;
@@ -517,26 +522,40 @@ form textarea {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     #menu-icon {
+        display:contents;
+        font-size: 25px;
+    }
+    .navlist a .bx-arrow-back{
         display: block;
+        top: 0;
+        margin-bottom: 70px;
+        font-size: 25px;
     }
 
     .navlist {
-        position: absolute;
-        top: -1000px;
-        right: 0;
-        left: 0;
-        display: flex;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 110vh;
+        padding-top: 50px;
         flex-direction: column;
         background: var(--bg-color);
-        text-align: left;
         transition: all 0.45s ease;
+        z-index: 2;
+    }
+    .navlist .bx-arrow-back{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
     }
 
     .navlist a {
         display: block;
-        margin: 17px;
+        margin: 30px;
         font-size: 20px;
         transition: all 0.45s ease;
         color: var(--text-color);

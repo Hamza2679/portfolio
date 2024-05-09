@@ -13,23 +13,24 @@
 <bod>
 	<header>
 		<a href="#" class="logo" >Hamza.<span>dev</span></a>
-		<ul class="navlist">
+		<ul class="navlist" id ="sidemenue">
 			<li><a href="#home">Home</a></li>
 			<li><a href="#about">About</a></li>
-			<li><a href="#services">Services</a></li>
-			<li><a href="#portfolio">Portfolio</a></li>
+			<li><a href="#services">Skills</a></li>
+			<li><a href="#portfolio">Projects</a></li>
 			<li><a href="#contact">Contact</a></li>
+			<li><a href="#"><i class='bx bx-arrow-back'  onclick="closemenue()"></i></a></li>
 		</ul>
-		<div class="bx bx-menu " id="menu-icon"></div>
+		<div class="bx bx-menu" id="menu-icon" onclick="openmenu()"></div>
 	</header>
 	<script>
-		const menuIcon = document.getElementById("menu-icon");
-		const navList = document.getElementById("navlist");
-	
-		menuIcon.addEventListener("click", function() {
-		  navList.classList.toggle("open");  // Add/remove "open" class for styling
-		});
-	</script>
+		var sidemenue=document.getElementById("sidemenue");
+		function openmenu(){
+			sidemenue.style.right="0";
+		}
+		function closemenue(){
+			sidemenue.style.right="-200px";
+		}
 	</script>
 	<section class="home" id="home">
 		<div class="home-text">
@@ -42,8 +43,7 @@
 			<p>A computer since and engineering student @ Adam since and technology university (Astu).
 			<br>A passionate Software Developer.</p>
 			<div class="button">
-				<a href="#about" class="btn">About me</a>
-				<a href="https://drive.google.com/file/d/1m0iQdFdmMi_DRCVK7Oxq7IU7bP37XHX3/view?usp=drive_link" class="btn">Download cv</a>
+				<a href="https://drive.google.com/file/d/1m0iQdFdmMi_DRCVK7Oxq7IU7bP37XHX3/view?usp=drive_link" class="btn">View cv</a>
 			</div>
 			<div class="contact-icon">
 				<label class="lala">check out my:</label>
