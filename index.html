@@ -1,153 +1,157 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Portfolio</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+		<link rel="icon" href="img/personalbf.jpg" sizes="32x32" type="image/jpeg">
+		<link rel="icon" href="img/personalbf.jpg" sizes="64x64" type="image/jpeg">
+	</head>
+	
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>personal portfolio</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+<body>
+    <header>
+        <a href="#" class="logo"><span>...</span></a>
+        <ul class="navlist" id="sidemenue">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Skills</a></li>
+            <li><a href="#portfolio">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#"><i class='bx bx-arrow-up' onclick="closemenue()"></i></a></li>
+        </ul>
+        <div class="bx bx-menu" id="menu-icon" onclick="openmenu()"></div>
+    </header>
 
-	<link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-</head>
-<bod>
-	<header>
-		<a href="#" class="logo" >Portfolio<span>..</span></a>
-		<ul class="navlist" id ="sidemenue">
-			<li><a href="#home">Home</a></li>
-			<li><a href="#about">About</a></li>
-			<li><a href="#services">Skills</a></li>
-			<li><a href="#portfolio">Projects</a></li>
-			<li><a href="#contact">Contact</a></li>
-			<li><a href="#"><i class='bx bx-arrow-back'  onclick="closemenue()"></i></a></li>
-		</ul>
-		<div class="bx bx-menu" id="menu-icon" onclick="openmenu()"></div>
-	</header>
-	<script>
-		var sidemenue=document.getElementById("sidemenue");
-		function openmenu(){
-			sidemenue.style.right="0";
-		}
-		function closemenue(){
-			sidemenue.style.right="-200px";
-		}
-	</script>
-	<section class="home" id="home">
-		<div class="home-text">
-			<div class="slide">
-				<span class="one">Hello</span>
-				<span class="two">it`s </span>
-			</div>
-			<h1>Hamza </h1>
-			<h3>I`m a Software<span>Developer</span></h3>
-			<p>A computer science and engineering student<br> @ Adam science and technology university (Astu).
-			<br>A passionate Software Developer.</p>
-			<div class="button">
-				<a href="https://drive.google.com/file/d/1m0iQdFdmMi_DRCVK7Oxq7IU7bP37XHX3/view?usp=drive_link" class="btn">View cv</a>
-			</div>
-			<div class="contact-icon">
-				<label class="lala">check out my:</label>
-				<a href="https://www.linkedin.com/in/hamza-musema-bb2b34230/"><i class='bx bxl-linkedin-square' ></i></a>
-				<a href="https://github.com/Hamza2679"><i class='bx bxl-github'></i></a>
-				<a href="https://t.me/@The_dreamer1"><i class='bx bxl-telegram' ></i></i></a>
-				<a href="https://twitter.com/@musema98871"><i class='bx bxl-twitter' ></i></a>
-				</div>
-		</div>
-		<div class="home-img">
-			<img src="img/personalbg.jpg" alt="">
-		</div>
-	</section>
-	<section class="about" id ="about">
-		<div class="abou-img">
-			<img src='img/personalbf.jpg'>
-		</div>
-		<div class="about-text">
-			<h2>About<span>Me</span></h2>
-			<h4> </h4>
-			<p>Hi there! I'm Hamza musema, a passionate software developer with 5 years of experience specializing in web and app development.
-				I thrive on the challenges of technology, approaching problems with a blend of analytical thinking and creativity. constantly learning and adapting to new tools and methodologies. 
-				I'm committed to delivering high-quality solutions that exceed expectations and am always eager to explore new opportunities for growth and collaboration.
-				Let's connect and explore how we can work together to achieve your goals!.</p>
-				<a href="https://docs.google.com/document/d/1oFscT2sv82q4QG6l0yKua86i2vCUtVKx/edit?usp=sharing&ouid=102047646414527223848&rtpof=true&sd=true" class="btn">More About</a>
-		</div>
-	</section>
-	<section class="services" id="services">
+    <section class="home" id="home">
+        <div class="home-text">
+            <div class="slide">
+                <span class="two">Hello it`s </span>
+            </div>
+            <h1>Hamza</h1>
+            <h3>I`m a Software<span>Developer</span></h3>
+            <p>A computer science and engineering student<br> @ Adam science and technology university (Astu).
+                <br>A passionate Software Developer.</p>
+            <div class="button">
+				<a href="https://drive.google.com/file/d/1m0iQdFdmMi_DRCVK7Oxq7IU7bP37XHX3/view?usp=drive_link" class="btn download-btn">
+					<i class='bx bxs-download'></i> Download CV
+				</a>
+				
+            </div>
+            <div class="contact-icon">
+        
+                <a href="https://www.linkedin.com/in/hamza-musema-bb2b34230/"><i class='bx bxl-linkedin-square'></i></a>
+                <a href="https://github.com/Hamza2679"><i class='bx bxl-github'></i></a>
+                <a href="https://t.me/@The_dreamer1"><i class='bx bxl-telegram'></i></a>
+                <a href="https://twitter.com/@musema98871"><i class='bx bxl-twitter'></i></a>
+            </div>
+        </div>
+        <div class="home-img">
+            <img src="img/personalbg.jpg" alt="Profile Image">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="abou-img">
+            <img src='img/personalbf.jpg'>
+        </div>
+        <div class="about-text">
+            <h2>About<span>Me</span></h2>
+            <h4></h4>
+            <p>Hi there! I'm Hamza musema, a passionate software developer with 5 years of experience specializing in web and app development.
+                I thrive on the challenges of technology, approaching problems with a blend of analytical thinking and creativity. constantly learning and adapting to new tools and methodologies.
+                I'm committed to delivering high-quality solutions that exceed expectations and am always eager to explore new opportunities for growth and collaboration.
+                Let's connect and explore how we can work together to achieve your goals!.</p>
+            <a href="https://docs.google.com/document/d/1oFscT2sv82q4QG6l0yKua86i2vCUtVKx/edit?usp=sharing&ouid=102047646414527223848&rtpof=true&sd=true" class="download-btn">More About</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="main-text">
+            <h2><span>My</span>Services</h2>
+        </div>
+        <div class="services-content">
+            <div class="box">
+                <div class="s-icons">
+                    <i class='bx bx-mobile-alt'></i>
+                </div>
+                <h1>App developer</h1>
+                <p>I'm a dedicated mobile app developer, specializing in Android solutions. With a focus on elegant design and seamless functionality,
+                    I aim to create meaningful apps that enhance daily life. Let's bring your mobile app vision to life together!
+                </p>
+                <a href="https://docs.google.com/document/d/1-pb32pjOiESVcNF2v6TCrRlxEQxBjjIH/edit?usp=sharing&ouid=102047646414527223848&rtpof=true&sd=true" class="download-btn">Read More</a>
+            </div>
+            <div class="box">
+                <div class="s-icon">
+                    <i class='bx bxl-react'></i>
+                </div>
+                <h1>Front-end developer</h1>
+                <p>I'm a dedicated React developer crafting engaging digital experiences. Specializing in efficient coding and innovative design,
+                    I build seamless applications. With React's power,
+                    I create elegant interfaces and empower businesses and users alike. Let's collaborate and bring your digital vision to life!</p>
+                <a href="https://docs.google.com/document/d/1EviI8c2bzIM17bdnhcLackUCA8oGWAoY/edit?usp=sharing&ouid=102047646414527223848&rtpof=true&sd=true" class="download-btn">Read More</a>
+            </div>
+            <div class="box">
+                <div class="s-icon">
+                    <i class="bx bx-edit-alt"></i>
+                </div>
+                <h1>Creative Design</h1>
+                <p>a web designer passionate about blending creativity and functionality to craft exceptional online experiences.
+                    In my article, "The Art and Science of Web Design," I explore how design principles, user experience, and technology converge to deliver compelling websites.
+                    Let's collaborate to bring your digital vision to life!</p>
+                <a href="https://docs.google.com/document/d/1baONIpb4qBIUu5DCZz8uPJHCtY8tjRnS/edit?usp=sharing&ouid=102047646414527223848&rtpof=true&sd=true" class="download-btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+   
+</section>
+<section class="portfolio" id="portfolio">
 	<div class="main-text">
-		<h2><span>My</span>Services</h2>
+		<h2><span>latest</span>project</h2>
 	</div>
-	<div class="services-content">
-		<div class="box">
-			<div class="s-icons">
-				<i class='bx bx-mobile-alt'></i>
+	<div class="portfolio-content">
+		<div class="row">
+			<img src="img/Full View_04.jpg">
+			<div class="layer">
+				<h5>Hello Delivery App</h5>
+				<p>A mobile app developed for Hello Delivery Company to streamline the delivery process. This app offers real-time tracking, order management, and seamless communication between customers and delivery personnel. Built with Flutter, the app ensures a smooth user experience across both iOS and Android platforms.</p>
+				<a href="https://github.com/Hamza2679/Delivery-platform"> <i class="bx bx-link-external"></i></a>
 			</div>
-			<h1>App developer</h1>
-			<p>I'm a dedicated mobile app developer, specializing in Android solutions. With a focus on elegant design and seamless functionality, 
-				I aim to create meaningful apps that enhance daily life. Let's bring your mobile app vision to life together!
-				</p>
-			<a href="https://docs.google.com/document/d/1-pb32pjOiESVcNF2v6TCrRlxEQxBjjIH/edit?usp=sharing&ouid=102047646414527223848&rtpof=true&sd=true" class="btn">Read More</a>
+		</div>
+		<div class="row">
+			<img src="img/Full View_08 (1).png">
+			<div class="layer">
+				<h5>Find Your Location App</h5>
+				<p>This mobile app provides real-time location tracking, displaying essential information such as latitude, longitude, and local time. Designed to help users quickly find and share their current location, the app uses geolocation services to provide accurate and up-to-date details. The clean and intuitive interface ensures ease of use, making it a valuable tool for navigation and location-based tasks.</p>
+				<a href="https://github.com/Hamza2679/Current-Location"><i class="bx bx-link-external"></i></a>
 			</div>
-			<div class="box">
-				<div class="s-icon">
-					<i class='bx bxl-react'></i>
-				</div>
-				<h1>Front-end developer</h1>
-				<p>I'm a dedicated React developer crafting engaging digital experiences. Specializing in efficient coding and innovative design, 
-					I build seamless applications. With React's power, 
-					I create elegant interfaces and empower businesses and users alike. Let's collaborate and bring your digital vision to life!</p>
-				<a href="https://docs.google.com/document/d/1EviI8c2bzIM17bdnhcLackUCA8oGWAoY/edit?usp=sharing&ouid=102047646414527223848&rtpof=true&sd=true" class="btn">Read More</a>
-				</div>
-				<div class="box">
-					<div class="s-icon">
-						<i class="bx bx-edit-alt"></i>
-					</div>
-					<h1>Creative Design</h1>
-					<p> a web designer passionate about blending creativity and functionality to craft exceptional online experiences.
-					In my article, "The Art and Science of Web Design," I explore how design principles, user experience, and technology converge to deliver compelling websites.
-				    Let's collaborate to bring your digital vision to life!</p>
-						<a href="https://docs.google.com/document/d/1baONIpb4qBIUu5DCZz8uPJHCtY8tjRnS/edit?usp=sharing&ouid=102047646414527223848&rtpof=true&sd=true" class="btn">Read More</a>
-					</div>
+		</div>
+		<div class="row">
+			<img src="img/Full View_08.png">
+			<div class="layer">
+				<h5>Get Details on Map App</h5>
+				<p>This mobile app allows users to explore and select any location on an interactive map. By simply tapping on a desired location, the app provides specific details such as coordinates, address, and other relevant information. Designed for ease of use, this app offers an intuitive way to get comprehensive information about any place directly from the map interface. Whether for travel, research, or everyday navigation, this tool makes location-based information accessible and user-friendly.</p>
+				<a href="https://github.com/Hamza2679/Get-details-on-map"><i class="bx bx-link-external"></i></a>
+			</div>
+		
+		</div>
+		<div class="row">
+			<img src="img/todo.png" height="800">
+			<div class="layer">
+				<h5>To-Do App</h5>
+				<p>This To-Do app is a comprehensive task management tool that includes all the essential features to keep you organized and productive. Users can add, edit, and delete tasks, set priorities, and categorize tasks for better management. With a clean and intuitive interface, it also includes features like due date reminders, progress tracking, and the ability to mark tasks as completed. Whether you're managing daily chores or planning long-term projects, this app offers everything you need to stay on top of your tasks.</p>
+				<a href="https://github.com/Hamza2679/Todo-List"><i class="bx bx-link-external"></i></a>
+			</div>
+		</div>
+		
 	</div>
 </section>
-	<section class="portfolio" id="portfolio">
-		<div class="main-text">
-			<h2><span>latest</span>project</h2>
-		</div>
-		<div class="portfolio-content">
-			<div class="row">
-				<img src="img/cha.jpg">
-				<div class="layer">
-					<h5>visual Design</h5>
-					<p>Carity a website bult on react for charitable organization check out my works and development journy on github</p>
-					<a href="https://github.com/Hamza2679/charity"> <i class="bx bx-link-external"></i></a>
-				</div>
-			</div>
-			<div class="row">
-				<img src="img/dictionary.jpg">
-				<div class="layer">
-					<h5>visual Design</h5>
-					<p>dictinary app bult in java check out my works and development journy on github</p>
-					<a href="https://github.com/Hamza2679/BlackDictionary"> <i class="bx bx-link-external"></i></a>
-				</div>
-			</div>
-			<div class="row">
-				<img src="img/clock.avif">
-				<div class="layer">
-					<h5>visual Design</h5>
-					<p>a flutter app for calculating the time zone check out my works and development journy on github</p>
-					<a href="https://github.com/Hamza2679/WorldTIme"> <i class="bx bx-link-external"></i></a>
-				</div>
-			</div>
-			<div class="row">
-				<img src="img/mu.jpg">
-				<div class="layer">
-					<h5>visual Design</h5>
-					<p>a mobile app bult on java for recording faverite music check out my works and development journy on github</p>
-					<a href="#"> <i class="bx bx-link-external"></i></a>
-				</div>
-			</div>
-			
-		</div>
-	</section>
-	
+
+
+    
 	<section class="contact" id="contact">
 		<div class="contact-text">
 			<h2>Contact<span>Me</span></h2>
@@ -206,6 +210,37 @@
 			<a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
 		</div>
 	</section>
+
+    <script>
+        // Function to add or remove the 'active' class to the nav links
+        function activateNavLink() {
+            // Get all the sections
+            const sections = document.querySelectorAll('section');
+            // Get all the navigation links
+            const navLinks = document.querySelectorAll('.navlist li a');
+            
+            // Determine the current scroll position
+            let scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+            // Loop through each section
+            sections.forEach((section, index) => {
+                // Get the offset and height of each section
+                const sectionTop = section.offsetTop - 50; // Adjust -50 to tweak the offset
+                const sectionHeight = section.clientHeight;
+
+                // Check if the current scroll position is within the section
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    // Remove 'active' class from all nav links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    // Add 'active' class to the current nav link
+                    navLinks[index].classList.add('active');
+                }
+            });
+        }
+
+        // Listen for scroll events
+        window.addEventListener('scroll', activateNavLink);
+    </script>
 
 </body>
 

@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;800;900&family=Poppins:wght@300;400;500;600&display=swap");
-
 * {
     padding: 0;
     margin: 0;
@@ -19,6 +18,7 @@
     --bg-font: 5rem;
     --h2-font: 3rem;
     --p-font: 1.1rem;
+    --shadow-color: rgba(84, 203, 233, 0.986);
 }
 
 body {
@@ -28,17 +28,23 @@ body {
 
 header {
     position: fixed;
-    width: 100%;
+    width: 60%;
     top: 0;
     right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    padding: 22px 15%;
+    background: rgba(51, 51, 51, 0.8);
+    padding: 10px 0;
     border-bottom: 1px solid transparent;
     transition: all 0.45s ease;
+    height: 60px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -49,8 +55,15 @@ header {
     margin-right: 30px;
 }
 
-span {
+.logo span {
     color: var(--main-color);
+    animation: colorChange 3s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% { color: var(--main-color); }
+    50% { color: #ff4081; }
+    100% { color: #ff8f00; }
 }
 
 .navlist {
@@ -63,14 +76,26 @@ span {
     font-weight: 500;
     margin: 0 25px;
     transition: all 0.45s ease;
+    position: relative;
 }
 
 .navlist a:hover {
     color: var(--main-color);
 }
 
-.navlist a.active {
-    color: var(--main-color);
+.navlist a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    transition: width 0.3s ease;
+}
+
+.navlist a:hover::after {
+    width: 100%;
 }
 
 #menu-icon {
@@ -82,6 +107,7 @@ span {
     display: none;
 }
 
+/* Home Section */
 section {
     padding: 160px 15% 120px;
 }
@@ -96,37 +122,34 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    overflow: hidden;
 }
 
-.slide {
-    margin-bottom: 20px;
+.home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, rgba(5, 180, 255, 0.2), rgba(44, 44, 44, 0.8));
+    z-index: 1;
 }
 
-.one {
-    display: inline-block;
-    margin-right: 15px;
-    padding: 0 15px;
-    line-height: 32px;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 5px;
-    background: var(--main-color);
-    color: var(--text-color);
-}
-
-.two {
-    display: inline-block;
-    color: var(--second-color);
-    font-size: 20px;
-    font-weight: 500;
+.home-text {
+    position: relative;
+    z-index: 2;
 }
 
 .home-text h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
     color: var(--text-color);
     line-height: 1.1;
     margin: 0 0 8px;
+    background: linear-gradient(45deg, var(--main-color), #ff4081);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .home-text h3 {
@@ -161,10 +184,12 @@ section {
     letter-spacing: 1px;
     font-weight: 500;
     transition: all 0.45s ease;
+    box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .btn:hover {
-    transform: scale(0.9);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px var(--shadow-color);
 }
 
 .about {
@@ -172,19 +197,26 @@ section {
     background-color: var(--bg-color);
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .about-img img {
-    max-width: 200px;
+    max-width: 300px;
     height: auto;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.5s ease;
+}
+
+.about-img img:hover {
+    transform: scale(1.05);
 }
 
 .about-text h2 {
     font-size: var(--h2-font);
     line-height: 1;
+    color: var(--main-color);
 }
 
 .about-text h4 {
@@ -201,45 +233,140 @@ section {
     font-family: "Times New Roman", Times, serif;
     line-height: 1.8;
     margin-bottom: 4rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #05b4ff, #00ffcb);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 175, 216, 0.4);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.download-btn i {
+    margin-right: 8px;
+    font-size: 1.4rem;
+    transition: transform 0.4s ease;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 175, 216, 0.6);
+}
+
+.download-btn:hover i {
+    transform: translateX(5px);
+}
+
+.download-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+}
+
+.download-btn:hover::before {
+    left: 100%;
+}
 .services {
     background: var(--second-bg-color);
+    padding: 50px 0;
+    /* Adding padding for better spacing */
+    clip-path: polygon(0 0, 100% 5%, 100% 95%, 0 100%);
+    /* Unique background shape */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for a 3D effect */
 }
 
 .main-text {
     text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    /* Centering the text block */
 }
 
 .main-text p {
     color: var(--second-color);
     font-size: 15px;
     margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    /* Subtle letter spacing for modern look */
 }
 
 .main-text h2 {
     font-size: var(--h2-font);
-    line-height: 1;
+    line-height: 1.2;
+    font-weight: 700;
+    /* Bolder font for emphasis */
+    background: linear-gradient(90deg, var(--main-color), var(--second-color));
+    -webkit-background-clip: text;
+    color: transparent;
+    /* Gradient text */
 }
 
 .services-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
-    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* More responsive layout */
+    align-items: stretch;
     gap: 2.5rem;
     margin-top: 5rem;
+    padding: 0 20px;
 }
 
 .box {
     background: var(--bg-color);
     padding: 35px 45px;
-    border-radius: 8px;
+    border-radius: 16px;
+    /* More rounded corners for modern style */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* Adding shadow for depth */
     transition: all 0.45s ease;
+    position: relative;
+    overflow: hidden;
+    /* Overflow hidden to contain hover effects */
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.45s;
+    /* Light overlay effect */
+}
+
+.box:hover::before {
+    opacity: 1;
 }
 
 .s-icons i {
     font-size: 32px;
     margin-bottom: 20px;
+    color: var(--main-color);
+    /* Add color to icons */
+    transition: color 0.3s;
 }
 
 .box h3 {
@@ -247,6 +374,7 @@ section {
     font-weight: 600;
     color: var(--text-color);
     margin-bottom: 15px;
+    transition: color 0.3s;
 }
 
 .box p {
@@ -257,14 +385,20 @@ section {
 }
 
 .box:hover {
-    transform: translateY(0.8px);
+    transform: translateY(-5px);
+    /* Move up on hover */
     cursor: pointer;
+}
+
+.box:hover h3, .box:hover .s-icons i {
+    color: var(--highlight-color);
+    /* Highlight text and icons on hover */
 }
 
 .portfolio-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, auto));
-    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    align-items: stretch;
     gap: 2.5rem;
     margin-top: 5rem;
 }
@@ -272,56 +406,68 @@ section {
 .row {
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 16px;
+    /* More rounded corners */
     cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .row img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 16px;
     display: block;
-    transition: transform 0.5s;
+    transition: transform 0.5s ease;
 }
 
 .layer {
     width: 100%;
     height: 0;
-    background: linear-gradient(rgb(0, 0, 0, 0.1), #00a6ff);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 166, 255, 0.7));
+    /* Adjusted gradient colors */
     position: absolute;
-    border-radius: 8px;
+    border-radius: 16px;
     left: 0;
     bottom: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 0 40px;
-    transition: height 0.5s;
+    transition: height 0.5s ease;
 }
 
 .layer h5 {
-    font: 20px;
-    font-weight: 600;
+    color: #fff;
+    /* White text for contrast */
+    font-size: 20px;
+    font-weight: bolder;
     margin-bottom: 15px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    /* Subtle text shadow for clarity */
 }
 
 .layer p {
-    color: var(--second-color);
+    color: #fff;
     font-size: 1rem;
     line-height: 1.8;
+    font-weight: bolder;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .layer i {
-    color: var(--main-color);
+    color: #fff;
     margin-top: 20px;
     font-size: 20px;
-    background: var(--text-color);
+    background: var(--main-color);
     width: 60px;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Glow effect */
 }
 
 .row:hover img {
@@ -338,6 +484,10 @@ section {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 2.5rem;
+    padding: 50px;
+    /* Added padding */
+    border-top: 2px solid var(--main-color);
+    /* Unique border design */
 }
 
 .contact-text h4 {
@@ -345,13 +495,21 @@ section {
     margin: 18px 0;
     font-size: 20px;
     font-weight: 600;
+    text-transform: uppercase;
+    /* Uppercase for emphasis */
+    letter-spacing: 1px;
+    /* Spacing for a clean look */
 }
 
 .contact-text h2 {
     font-size: var(--h2-font);
-    line-height: 1;
+    line-height: 1.2;
     margin-top: 10px;
     margin-left: 70px;
+    background: linear-gradient(90deg, var(--highlight-color), var(--text-color));
+    -webkit-background-clip: text;
+    color: transparent;
+    /* Gradient text */
 }
 
 .contact-text p {
@@ -359,49 +517,74 @@ section {
     font-size: var(--p-font);
     line-height: 1.8;
     margin-bottom: 30px;
+    letter-spacing: 0.5px;
 }
 
+/* Universal Styles */
+:root {
+    --border-radius: 12px; /* Increased for a more modern look */
+}
+
+/* List Styles */
 .list {
     margin-bottom: 2.8rem;
 }
 
 .list li {
     margin-bottom: 12px;
+    list-style: none; /* Removed bullet points for a cleaner look */
 }
 
 .list li a {
     display: block;
     color: var(--second-color);
     font-size: 14px;
-    transition: all 0.45s ease;
+    padding: 8px 12px; /* Added padding for a button-like feel */
+    border-radius: var(--border-radius);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1)); /* Subtle gradient background */
+    transition: all 0.45s ease, box-shadow 0.45s ease;
 }
 
 .list li a:hover {
     color: var(--text-color);
-    transform: translateY(5px);
+    transform: translateY(-3px); /* Slight upward movement for interaction */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Added shadow for depth */
 }
-.lala{
-    margin-top: 40px;
-    margin-right: 20px;
+
+/* Icon Styles */
+
+.lala {
+    margin: 40px 20px;
+    border: 2px solid var(--main-color);
+    padding: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
 }
+
+.lala:hover {
+    transform: scale(1.05);
+}
+
 .contact-icon i {
     margin-top: 40px;
-    height: 45px;
-    width: 45px;
-    color: var(--text-color);
+    height: 50px;
+    width: 50px;
     font-size: 22px;
-    display: inline-block;
+    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
     margin-right: 15px;
-    transition: all 0.45s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .contact-icon i:hover {
-    color: var(--main-color);
+    background-color: var(--main-color);
+    transform: rotate(15deg);
+    color: var(--bg-color);
 }
-
 .contact-form form {
     position: relative;
 }
@@ -412,11 +595,17 @@ form textarea {
     padding: 14px;
     background: var(--bg-color);
     color: var(--text-color);
-    border: none;
+    border: 2px solid var(--second-color); /* Added border */
     outline: none;
     font-size: 15px;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     margin-bottom: 10px;
+    transition: all 0.35s ease; /* Transition for border-color change */
+}
+
+.contact-form form input:focus,
+form textarea:focus {
+    border-color: var(--main-color); /* Change border color on focus */
 }
 
 .contact-form textarea {
@@ -424,20 +613,26 @@ form textarea {
     height: 240px;
 }
 
+/* Submit Button Styles */
 .contact-form .submit {
     display: inline-block;
     font-size: 16px;
     background: var(--main-color);
     color: var(--text-color);
     width: 160px;
-    transition: all 0.45s ease;
+    border-radius: var(--border-radius);
+    text-align: center; /* Center text inside the button */
+    padding: 12px 0; /* Added padding for better touch targets */
+    transition: all 0.45s ease, transform 0.45s ease;
 }
 
 .contact-form .submit:hover {
     transform: scale(1.1);
     cursor: pointer;
+    background: linear-gradient(to right, var(--main-color), var(--second-color)); /* Gradient background on hover */
 }
 
+/* Footer Styles */
 .end {
     padding: 20px 15px;
     display: flex;
@@ -446,30 +641,62 @@ form textarea {
     justify-content: space-between;
     gap: 2rem;
     background: var(--bg-color);
+    border-top: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border-top */
 }
 
 .last-text p {
     color: var(--second-color);
     font-size: 14px;
+    transition: color 0.35s ease;
 }
 
-.top i{
+.last-text p:hover {
+    color: var(--main-color); /* Change text color on hover */
+}
+
+/* Back to Top Icon */
+.top i {
     padding: 10px;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     font-size: 15px;
-    columns: var(--text-color);
+    color: var(--text-color);
     background: var(--main-color);
+    transition: background 0.35s ease, transform 0.35s ease;
 }
 
+.top i:hover {
+    background: var(--second-color);
+    transform: translateY(-5px); /* Move icon up on hover */
+}
+
+/* Link Styles */
 .link {
     text-decoration: none;
     color: #007bff;
+    position: relative;
+    transition: color 0.35s ease;
 }
 
-.navlist .bx-arrow-back{
-    display: none;
+.link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #007bff;
+    transition: width 0.35s ease; /* Underline animation on hover */
 }
 
+.link:hover {
+    color: var(--main-color);
+}
+
+.link:hover::after {
+    width: 100%; /* Animate underline on hover */
+}
+
+/* Responsive Styles */
 @media (max-width: 1480px) {
     header {
         padding: 12px 2.5%;
@@ -500,11 +727,12 @@ form textarea {
     .home {
         height: 95vh;
     }
+
     .contact-icon i {
-        width: 10px;
+        width: 35px; /* Adjusted size */
+        height: 35px; /* Adjusted size */
         margin-right: 10px;
     }
-    
 }
 
 @media (max-width: 920px) {
@@ -525,11 +753,12 @@ form textarea {
 
 @media (max-width: 600px) {
     #menu-icon {
-        display:contents;
+        display: contents;
         font-size: 25px;
         margin-left: 100px;
     }
-    .navlist a .bx-arrow-back{
+
+    .navlist a .bx-arrow-back {
         display: block;
         top: 0;
         margin-bottom: 70px;
@@ -547,8 +776,10 @@ form textarea {
         background: var(--bg-color);
         transition: all 0.45s ease;
         z-index: 2;
+        border-left: 2px solid rgba(255, 255, 255, 0.1); /* Added border-left */
     }
-    .navlist .bx-arrow-back{
+
+    .navlist .bx-arrow-back {
         position: absolute;
         top: 25px;
         left: 25px;
