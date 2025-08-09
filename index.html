@@ -17,6 +17,49 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+    .project-links {
+      display: flex;
+      gap: 0.7em;
+      margin-top: 1em;
+    }
+    .project-links .btn {
+      min-width: 110px;
+      padding: 0.5em 1.1em;
+      font-size: 1em;
+      border-radius: 0.7em;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      border: none;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-demo {
+      background: linear-gradient(90deg, #10b981 60%, #34d399 100%);
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px rgba(16,185,129,0.08);
+    }
+    .btn-demo:hover {
+      background: linear-gradient(90deg, #059669 60%, #10b981 100%);
+      color: #fff;
+    }
+    .btn-github {
+      background: #23272f;
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px rgba(35,39,47,0.08);
+    }
+    .btn-github:hover {
+      background: #16181d;
+      color: #10b981;
+    }
+    </style>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./img/personalbf.png" sizes="32x32">
@@ -29,6 +72,8 @@
     <meta http-equiv="Expires" content="Wed, 21 Oct 2025 07:28:00 GMT">
 </head>
 <body>
+    <!-- Animated Background Canvas -->
+    <canvas id="animated-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;"></canvas>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -85,6 +130,11 @@
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <div style="margin-bottom: 1rem;">
+                        <span style="display:inline-block;background:rgba(16,185,129,0.12);color:#10b981;font-weight:600;padding:0.4em 1em;border-radius:1em;font-size:1rem;">
+                             currently open for <strong>Remote Work</strong> & <strong>Freelancing</strong>!
+                        </span>
+                    </div>
                     <p class="hero-greeting">Hello, I'm</p>
                     <h1 class="hero-title">Hamza Musema</h1>
                     <h2 class="hero-subtitle">Full Stack Developer</h2>
@@ -315,9 +365,8 @@
                         <span class="tag">REST APIs</span>
                         <span class="tag">Microservices</span>
                     </div>
-                  
                 </div>
-                
+
                 <div class="skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-database"></i>
@@ -333,9 +382,8 @@
                         <span class="tag">MongoDB</span>
                         <span class="tag">Database Design</span>
                     </div>
-                  
                 </div>
-                
+
                 <div class="skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-mobile-alt"></i>
@@ -351,9 +399,24 @@
                         <span class="tag">Cross-platform</span>
                         <span class="tag">Mobile UI/UX</span>
                     </div>
-                 
                 </div>
-                
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Flutter State Management</h3>
+                    <p>
+                        Proficient in modern state management solutions for Flutter, ensuring scalable and maintainable mobile apps.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="tag">BLoC</span>
+                        <span class="tag">Riverpod</span>
+                        <span class="tag">Provider</span>
+                        <span class="tag">GetX</span>
+                    </div>
+                </div>
+
                 <div class="skill-card">
                     <div class="skill-icon">
                         <i class="fab fa-react"></i>
@@ -369,9 +432,26 @@
                         <span class="tag">HTML/CSS</span>
                         <span class="tag">Modern UI/UX</span>
                     </div>
-                   
                 </div>
-                <di class="skill-card">
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Team & Communication</h3>
+                    <p>
+                        Strong team player with excellent communication skills, leadership, and experience in collaborative environments.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="tag">Team Collaboration</span>
+                        <span class="tag">Good Communication</span>
+                        <span class="tag">Problem Solving</span>
+                        <span class="tag">Leadership</span>
+                        <span class="tag">Agile/Scrum</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-pencil-ruler"></i>
                     </div>
@@ -391,167 +471,440 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Latest Projects</h2>
-                <p class="section-subtitle">Some of my recent work</p>
+        <section id="projects" class="projects">
+            <style>
+                        .modern-projects-nav {
+                            display: flex;
+                            justify-content: center;
+                            gap: 1.2em;
+                            margin-bottom: 2.5em;
+                        }
+                        .modern-projects-nav-btn {
+                            background: rgba(16,185,129,0.10);
+                            border: none;
+                            color: #10b981;
+                            padding: 0.7em 2.2em;
+                            border-radius: 2em;
+                            font-size: 1.08em;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+                            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+                            letter-spacing: 0.02em;
+                        }
+                        .modern-projects-nav-btn.active, .modern-projects-nav-btn:hover {
+                            background: linear-gradient(90deg, #10b981 60%, #34d399 100%);
+                            color: #fff;
+                            box-shadow: 0 4px 18px rgba(16,185,129,0.13);
+                        }
+                .modern-projects-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+                    gap: 2.2em;
+                }
+                .modern-project-card {
+                    background: rgba(30,40,80,0.7);
+                    border-radius: 1.3em;
+                    overflow: hidden;
+                    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+                    transition: transform 0.25s, box-shadow 0.25s, border 0.25s;
+                    border: 1.5px solid rgba(255,255,255,0.09);
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    min-height: 420px;
+                }
+                .modern-project-card:hover {
+                    transform: translateY(-10px) scale(1.025);
+                    box-shadow: 0 16px 40px rgba(255,138,0,0.13), 0 8px 32px rgba(0,0,0,0.22);
+                    border: 1.5px solid rgba(255,255,255,0.18);
+                }
+                .modern-project-image {
+                    height: 180px;
+                    background: linear-gradient(45deg, #0f1b31, #1c3b5e);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                }
+                .modern-project-icon {
+                    font-size: 3.5rem;
+                    color: rgba(255,255,255,0.13);
+                }
+                .modern-category-chip {
+                    position: absolute;
+                    top: 18px;
+                    right: 18px;
+                    background: linear-gradient(90deg, #ff8a00, #ff0080);
+                    color: #fff;
+                    padding: 0.35em 1.1em;
+                    border-radius: 1.2em;
+                    font-size: 0.92em;
+                    font-weight: 600;
+                    z-index: 2;
+                    box-shadow: 0 2px 8px rgba(255,138,0,0.13);
+                }
+                .modern-project-content {
+                    padding: 2em 1.5em 1.5em 1.5em;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .modern-project-content h3 {
+                    font-size: 1.35rem;
+                    margin-bottom: 0.7em;
+                    color: #fff;
+                }
+                .modern-project-content p {
+                    color: #d1d1d1;
+                    margin-bottom: 1.2em;
+                    flex-grow: 1;
+                }
+                .modern-project-tech {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.6em;
+                    margin-bottom: 1.2em;
+                }
+                .modern-tech-tag {
+                    background: rgba(0,150,255,0.18);
+                    color: #4db8ff;
+                    padding: 0.32em 1em;
+                    border-radius: 1.2em;
+                    font-size: 0.89em;
+                    font-weight: 600;
+                }
+                .modern-project-links {
+                    display: flex;
+                    gap: 0.7em;
+                    flex-wrap: wrap;
+                }
+                .modern-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    padding: 0.7em 1.5em;
+                    border-radius: 2em;
+                    font-weight: 600;
+                    text-decoration: none;
+                    font-size: 0.98em;
+                    border: none;
+                    transition: all 0.2s;
+                }
+                .modern-btn i { margin-right: 8px; }
+                        .modern-btn-demo {
+                            background: linear-gradient(90deg, #10b981 60%, #34d399 100%);
+                            color: #fff;
+                            border: none;
+                            box-shadow: 0 2px 8px rgba(16,185,129,0.08);
+                        }
+                        .modern-btn-demo:hover {
+                            background: linear-gradient(90deg, #059669 60%, #10b981 100%);
+                            color: #fff;
+                        }
+                        .modern-btn-github {
+                            background: #23272f;
+                            color: #fff;
+                            border: none;
+                            box-shadow: 0 2px 8px rgba(35,39,47,0.08);
+                        }
+                        .modern-btn-github:hover {
+                            background: #16181d;
+                            color: #10b981;
+                        }
+                @media (max-width: 900px) {
+                    .modern-projects-grid { grid-template-columns: 1fr 1fr; }
+                }
+                @media (max-width: 600px) {
+                    .modern-projects-grid { grid-template-columns: 1fr; }
+                }
+            </style>
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Latest Projects</h2>
+                    <p class="section-subtitle">Showcasing my work by technology and platform</p>
+                </div>
+                <div class="modern-projects-nav">
+                    <button class="modern-projects-nav-btn active" data-category="all">All</button>
+                    <button class="modern-projects-nav-btn" data-category="backend">Backend</button>
+                    <button class="modern-projects-nav-btn" data-category="flutter">Flutter</button>
+                    <button class="modern-projects-nav-btn" data-category="web">Web</button>
+                </div>
+                <div class="modern-projects-grid">
+                                <!-- 1. HudHud Express E-Commerce App -->
+                                <div class="modern-project-card" data-category="flutter">
+                                    <div class="modern-category-chip">Flutter</div>
+                                    <div class="modern-project-image">
+                                        <span class="modern-project-icon"><i class="fas fa-store"></i></span>
+                                    </div>
+                                    <div class="modern-project-content">
+                                        <h3>HudHud Express E-Commerce App</h3>
+                                        <p>A full-featured e-commerce mobile app for HudHud Express, offering product browsing, cart, checkout, order tracking, and more. Available on Google Play Store.</p>
+                                        <div class="modern-project-tech">
+                                            <span class="modern-tech-tag">Flutter</span>
+                                            <span class="modern-tech-tag">Firebase</span>
+                                            <span class="modern-tech-tag">REST API</span>
+                                        </div>
+                                        <div class="modern-project-links">
+                                            <a href="https://play.google.com/store/apps/details?id=com.commercepal.commercepal&hl=en" class="modern-btn modern-btn-demo" target="_blank"><i class="fab fa-google-play"></i> Play Store</a>
+                                            <a href="https://github.com/AbdulsemedM/Com-Cus" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 2. ASTU Social Engagement Backend -->
+                                <div class="modern-project-card" data-category="backend">
+                                    <div class="modern-category-chip">Backend</div>
+                                    <div class="modern-project-image">
+                                        <span class="modern-project-icon"><i class="fas fa-users"></i></span>
+                                    </div>
+                                    <div class="modern-project-content">
+                                        <h3>ASTU Social Engagement Backend</h3>
+                                        <p>RESTful backend for the ASTU Social Engagement app, supporting user authentication, posts, comments, and notifications. API fully documented with Swagger.</p>
+                                        <div class="modern-project-tech">
+                                            <span class="modern-tech-tag">Node.js</span>
+                                            <span class="modern-tech-tag">Express</span>
+                                            <span class="modern-tech-tag">PostgreSQL</span>
+                                            <span class="modern-tech-tag">Swagger</span>
+                                        </div>
+                                        <div class="modern-project-links">
+                                            <a href="https://nodeback-final.onrender.com/doc/" class="modern-btn modern-btn-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Swagger Docs</a>
+                                            <a href="https://github.com/Hamza2679/nodeBack" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 3. Driving School Backend API -->
+                                <div class="modern-project-card" data-category="backend">
+                                    <div class="modern-category-chip">Backend</div>
+                                    <div class="modern-project-image">
+                                        <span class="modern-project-icon"><i class="fas fa-car"></i></span>
+                                    </div>
+                                    <div class="modern-project-content">
+                                        <h3>Driving School Backend API</h3>
+                                        <p>RESTful backend for a driving school platform, providing endpoints for user management, course scheduling, instructor assignment, and more. Fully documented with Swagger.</p>
+                                        <div class="modern-project-tech">
+                                            <span class="modern-tech-tag">Node.js</span>
+                                            <span class="modern-tech-tag">Express</span>
+                                            <span class="modern-tech-tag">PostgreSQL</span>
+                                            <span class="modern-tech-tag">Swagger</span>
+                                        </div>
+                                        <div class="modern-project-links">
+                                            <a href="https://driving-backend-stmb.onrender.com/api-docs/" class="modern-btn modern-btn-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Swagger Docs</a>
+                                            <a href="https://github.com/edrivingschool/driving-backend" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 4. Angler Trading Website (moved up) -->
+                                <div class="modern-project-card" data-category="web">
+                                                <div class="modern-category-chip">Web</div>
+                                                <div class="modern-project-image">
+                                                    <span class="modern-project-icon"><i class="fas fa-globe"></i></span>
+                                                </div>
+                                                <div class="modern-project-content">
+                                                    <h3>Angler Trading Website</h3>
+                                                    <p>A modern, responsive website built for Angler Trading to showcase their global trading services, products, and company information. Features a clean UI, product catalog, and contact forms.</p>
+                                                    <div class="modern-project-tech">
+                                                        <span class="modern-tech-tag">PostgreSQL</span>
+                                                        <span class="modern-tech-tag">Node.js</span>
+                                                        <span class="modern-tech-tag">React</span>
+                                                    </div>
+                                                    <div class="modern-project-links">
+                                                        <a href="https://anglertrading.com/" class="modern-btn modern-btn-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                                        <a href="https://github.com/AbdulsemedM/Global_Link" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                <!-- 5. E-Commerce Backend API -->
+                                <div class="modern-project-card" data-category="backend">
+                                    <div class="modern-category-chip">Backend</div>
+                                    <div class="modern-project-image">
+                                        <span class="modern-project-icon"><i class="fas fa-shopping-cart"></i></span>
+                                    </div>
+                                    <div class="modern-project-content">
+                                        <h3>E-Commerce Backend API</h3>
+                                        <p>Full-featured RESTful API for e-commerce platform with user authentication, product management, order processing, and payment integration.</p>
+                                        <div class="modern-project-tech">
+                                            <span class="modern-tech-tag">php</span>
+                                            <span class="modern-tech-tag">PostgreSQL</span>
+                                            <span class="modern-tech-tag">JWT Auth</span>
+                                        </div>
+                                        <div class="modern-project-links">
+                                            <a href="https://github.com/Hamza2679/Php-Backend-for-Ecommerce" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                        </div>
+                                    </div>
+                                </div>
+                    <div class="modern-project-card" data-category="flutter">
+                        <div class="modern-category-chip">flutter</div>
+                        <div class="modern-project-image">
+                            <span class="modern-project-icon"><i class="fas fa-users"></i></span>
+                        </div>
+                        <div class="modern-project-content">
+                            <h3>ASTU Social Engagement App</h3>
+                            <p>The main web application for ASTU Social Engagement, enabling users to connect, share posts, comment, and interact in a modern social platform. Built with React and a clean, responsive UI.</p>
+                            <div class="modern-project-tech">
+                                <span class="modern-tech-tag">React</span>
+                                <span class="modern-tech-tag">JavaScript</span>
+                                <span class="modern-tech-tag">HTML</span>
+                                <span class="modern-tech-tag">CSS</span>
+                            </div>
+                            <div class="modern-project-links">
+                                <a href="https://astusociall.netlify.app/" class="modern-btn modern-btn-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/Abubeker01/project" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modern-project-card" data-category="flutter">
+                        <div class="modern-category-chip">flutter</div>
+                        <div class="modern-project-image">
+                            <span class="modern-project-icon"><i class="fas fa-user-shield"></i></span>
+                        </div>
+                        <div class="modern-project-content">
+                            <h3>ASTU Social Engagement Admin Dashboard</h3>
+                            <p>A React-based admin dashboard for managing users, posts, and analytics in the ASTU Social Engagement app. Features real-time data, user moderation, and a modern UI.</p>
+                            <div class="modern-project-tech">
+                                <span class="modern-tech-tag">React</span>
+                                <span class="modern-tech-tag">JavaScript</span>
+                                <span class="modern-tech-tag">HTML</span>
+                                <span class="modern-tech-tag">CSS</span>
+                            </div>
+                            <div class="modern-project-links">
+                                <a href="https://astusocialadmin.netlify.app/" class="modern-btn modern-btn-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/abdu128/Admin_Dashboard" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modern-project-card" data-category="web">
+                        <div class="modern-category-chip">Web</div>
+                        <div class="modern-project-image">
+                            <span class="modern-project-icon"><i class="fas fa-chalkboard-teacher"></i></span>
+                        </div>
+                        <div class="modern-project-content">
+                            <h3>Driving School Web App</h3>
+                            <p>A modern web application for driving school students, built with React. Features course registration, schedules, instructor profiles, and student dashboards.</p>
+                            <div class="modern-project-tech">
+                                <span class="modern-tech-tag">React</span>
+                                <span class="modern-tech-tag">JavaScript</span>
+                                <span class="modern-tech-tag">HTML</span>
+                                <span class="modern-tech-tag">CSS</span>
+                            </div>
+                            <div class="modern-project-links">
+                                <a href="https://edriving.netlify.app/" class="modern-btn modern-btn-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/edrivingschool/edrivingstudent" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modern-project-card" data-category="web">
+                        <div class="modern-category-chip">Web</div>
+                        <div class="modern-project-image">
+                            <span class="modern-project-icon"><i class="fas fa-globe"></i></span>
+                        </div>
+                        <div class="modern-project-content">
+                            <h3>Angler Trading Website</h3>
+                            <p>A modern, responsive website built for Angler Trading to showcase their global trading services, products, and company information. Features a clean UI, product catalog, and contact forms.</p>
+                            <div class="modern-project-tech">
+                                <span class="modern-tech-tag">PostgreSQL</span>
+                                <span class="modern-tech-tag">Node.js</span>
+                                <span class="modern-tech-tag">React</span>
+                            </div>
+                            <div class="modern-project-links">
+                                <a href="https://github.com/AbdulsemedM/Global_Link" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modern-project-card" data-category="flutter">
+                        <div class="modern-category-chip">Flutter</div>
+                        <div class="modern-project-image">
+                            <span class="modern-project-icon"><i class="fas fa-truck"></i></span>
+                        </div>
+                        <div class="modern-project-content">
+                            <h3>Time Delivery App</h3>
+                            <p>A mobile application built with Flutter for efficient delivery management, featuring real-time tracking, order handling, and seamless communication. (Not yet deployed)</p>
+                            <div class="modern-project-tech">
+                                <span class="modern-tech-tag">Flutter</span>
+                                <span class="modern-tech-tag">Firebase</span>
+                                <span class="modern-tech-tag">Maps API</span>
+                            </div>
+                            <div class="modern-project-links">
+                                <a href="https://github.com/Hamza2679/Time-Delivery-service" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modern-project-card" data-category="flutter">
+                        <div class="modern-category-chip">Flutter</div>
+                        <div class="modern-project-image">
+                            <span class="modern-project-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        </div>
+                        <div class="modern-project-content">
+                            <h3>Find Your Location App</h3>
+                            <p>Real-time location tracking app displaying latitude, longitude, and local time. Clean interface for quick location sharing and navigation.</p>
+                            <div class="modern-project-tech">
+                                <span class="modern-tech-tag">Flutter</span>
+                                <span class="modern-tech-tag">Geolocation</span>
+                                <span class="modern-tech-tag">Maps</span>
+                            </div>
+                            <div class="modern-project-links">
+                                <a href="https://github.com/Hamza2679/Current-Location" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modern-project-card" data-category="flutter">
+                        <div class="modern-category-chip">Flutter</div>
+                        <div class="modern-project-image">
+                            <span class="modern-project-icon"><i class="fas fa-map"></i></span>
+                        </div>
+                        <div class="modern-project-content">
+                            <h3>Get Details on Map App</h3>
+                            <p>Interactive map app allowing users to explore and select locations for detailed information including coordinates and addresses.</p>
+                            <div class="modern-project-tech">
+                                <span class="modern-tech-tag">Flutter</span>
+                                <span class="modern-tech-tag">Google Maps</span>
+                                <span class="modern-tech-tag">API Integration</span>
+                            </div>
+                            <div class="modern-project-links">
+                                <a href="https://github.com/Hamza2679/Get-details-on-map" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modern-project-card" data-category="web">
+                        <div class="modern-category-chip">Web</div>
+                        <div class="modern-project-image">
+                            <span class="modern-project-icon"><i class="fas fa-project-diagram"></i></span>
+                        </div>
+                        <div class="modern-project-content">
+                            <h3>Task Management System</h3>
+                            <p>Full-stack web application with React frontend and Node.js backend, featuring real-time collaboration, task assignment, and progress tracking.</p>
+                            <div class="modern-project-tech">
+                                <span class="modern-tech-tag">React</span>
+                                <span class="modern-tech-tag">Node.js</span>
+                                <span class="modern-tech-tag">MongoDB</span>
+                                <span class="modern-tech-tag">Socket.io</span>
+                            </div>
+                            <div class="modern-project-links">
+                                <a href="https://github.com/Hamza2679/project-managment-system" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-icon">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Hamza2679/Delivery-platform" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Hello Delivery App</h3>
-                        <p>
-                            A mobile app developed for Hello Delivery Company to streamline the delivery process. 
-                            Features real-time tracking, order management, and seamless communication.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">Maps API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Hamza2679/Current-Location" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Find Your Location App</h3>
-                        <p>
-                            Real-time location tracking app displaying latitude, longitude, and local time. 
-                            Clean interface for quick location sharing and navigation.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Geolocation</span>
-                            <span class="tech-tag">Maps</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-icon">
-                            <i class="fas fa-map"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Hamza2679/Get-details-on-map" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Get Details on Map App</h3>
-                        <p>
-                            Interactive map app allowing users to explore and select locations for detailed 
-                            information including coordinates and addresses.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Google Maps</span>
-                            <span class="tech-tag">API Integration</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-icon">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Hamza2679/Todo-List" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>To-Do App</h3>
-                        <p>
-                            Comprehensive task management tool with features like priority setting, 
-                            categorization, due date reminders, and progress tracking.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Local Storage</span>
-                            <span class="tech-tag">State Management</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>E-Commerce Backend API</h3>
-                        <p>
-                            Full-featured RESTful API for e-commerce platform with user authentication, 
-                            product management, order processing, and payment integration.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">JWT Auth</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Task Management System</h3>
-                        <p>
-                            Full-stack web application with React frontend and Node.js backend, featuring 
-                            real-time collaboration, task assignment, and progress tracking.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Socket.io</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const filterButtons = document.querySelectorAll('.modern-projects-nav-btn');
+                    const projectCards = document.querySelectorAll('.modern-project-card');
+                    filterButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            filterButtons.forEach(btn => btn.classList.remove('active'));
+                            button.classList.add('active');
+                            const category = button.getAttribute('data-category');
+                            projectCards.forEach(card => {
+                                if (category === 'all' || card.getAttribute('data-category') === category) {
+                                    card.style.display = 'flex';
+                                } else {
+                                    card.style.display = 'none';
+                                }
+                            });
+                        });
+                    });
+                });
+            </script>
+        </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
@@ -566,117 +919,85 @@
                 </button>
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Hamza delivered an exceptional mobile app for our delivery company. His attention to detail, 
-                            technical expertise, and ability to understand our business needs made the entire process smooth. 
-                            The app has significantly improved our operational efficiency."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Sarah Johnson</h4>
-                                <p>CEO, Hello Delivery Company</p>
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Hamza is a reliable and creative developer. He helped us launch Angler Trading's new platform on time and with great quality. Highly recommended!"
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>M.r Nesredin Yenus</h4>
+                                    <p>Co-Founder, Angler Trading</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Working with Hamza on our e-commerce backend was a game-changer. His database optimization 
-                            skills and API design expertise resulted in a 40% improvement in our system performance. 
-                            Highly recommend for any backend development needs."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Michael Chen</h4>
-                                <p>CTO, TechStart Solutions</p>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "We worked with Hamza on the HudHud Express app. His technical skills and dedication were key to our success. He is a great team player."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>M.r Abdusemed Jemal</h4>
+                                    <p>CTO, HudHud Express</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Hamza's full-stack development skills are outstanding. He built our task management system 
-                            from concept to deployment, handling both frontend and backend seamlessly. His React and 
-                            Node.js expertise is top-notch."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Emily Rodriguez</h4>
-                                <p>Product Manager, InnovateCorp</p>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Hamza built a robust backend and web app for our e-driving school. His expertise and support made the project a success."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>M.r Ashenafi Mulugeta</h4>
+                                    <p>CEO, E-Driving School</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Hamza's database optimization skills are exceptional. He helped us improve our PostgreSQL 
-                            performance by 60% and implemented efficient data structures that scaled perfectly with our growth."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>David Kim</h4>
-                                <p>Senior Developer, DataFlow Inc</p>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Hamza delivered our Time Delivery Service app with impressive speed and quality. He is always responsive and professional."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>M.r Abuzer Nasir</h4>
+                                    <p>CEO, Time Delivery Service</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Working with Hamza was a pleasure. His Flutter development skills are top-notch, and he 
-                            delivered our mobile app ahead of schedule with all the features we requested and more."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Lisa Wang</h4>
-                                <p>Product Owner, MobileFirst</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <button class="scroll-btn scroll-right" aria-label="Scroll Right">
                     <i class="fas fa-chevron-right"></i>
@@ -777,8 +1098,125 @@
     </button>
 
     <!-- JavaScript -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
-    <script src="js/config.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+        emailjs.init("s1NJbpRsX98iZmwpQ");
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            // Send email
+            emailjs.send("service_qtvxz3p", "template_mhg5ozw", {
+                name,
+                email,
+                message
+            }).then(function(response) {
+                console.log('Email sent successfully:', response);
+                alert('Your message has been sent successfully!');
+                document.getElementById('contactForm').reset();
+            }, function(error) {
+                console.error('Email sending failed:', error);
+                let errorMsg = 'An error occurred while sending your message. Please try again later.';
+                if (error && error.text) {
+                    errorMsg += '\nDetails: ' + error.text;
+                } else if (error && error.status) {
+                    errorMsg += `\nStatus: ${error.status}`;
+                }
+                alert(errorMsg);
+            });
+        });
+        </script>
+
+            <!-- Animated background: floating particles -->
+            <script>
+            (function() {
+                const canvas = document.getElementById('animated-bg');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                let width = window.innerWidth;
+                let height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+
+                function resize() {
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    canvas.width = width;
+                    canvas.height = height;
+                }
+                window.addEventListener('resize', resize);
+
+                // Particle config
+                const particles = [];
+                const PARTICLE_COUNT = 60;
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        r: 1.5 + Math.random() * 2.5,
+                        dx: (Math.random() - 0.5) * 0.5,
+                        dy: (Math.random() - 0.5) * 0.5,
+                        alpha: 0.2 + Math.random() * 0.4
+                    });
+                }
+
+                function draw() {
+                    ctx.clearRect(0, 0, width, height);
+                    for (let p of particles) {
+                        ctx.save();
+                        ctx.globalAlpha = p.alpha;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+                        ctx.fillStyle = '#00bfff';
+                        ctx.shadowColor = '#00bfff';
+                        ctx.shadowBlur = 10;
+                        ctx.fill();
+                        ctx.restore();
+                    }
+                }
+
+                function update() {
+                    for (let p of particles) {
+                        p.x += p.dx;
+                        p.y += p.dy;
+                        if (p.x < 0 || p.x > width) p.dx *= -1;
+                        if (p.y < 0 || p.y > height) p.dy *= -1;
+                    }
+                }
+
+                function animate() {
+                    draw();
+                    update();
+                    requestAnimationFrame(animate);
+                }
+                animate();
+            })();
+            </script>
 </body>
+    <script>
+    // Project navigation filtering
+    document.addEventListener('DOMContentLoaded', function() {
+        const navBtns = document.querySelectorAll('.project-nav-btn');
+        const allCards = document.querySelectorAll('.project-card');
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                navBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const cat = btn.getAttribute('data-category');
+                allCards.forEach(card => {
+                    if (cat === 'all') {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = card.classList.contains('category-' + cat) ? '' : 'none';
+                    }
+                });
+            });
+        });
+        // Default to show all
+        navBtns[0].click();
+    });
+    </script>
 </html>
