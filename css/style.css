@@ -285,6 +285,7 @@ a {
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-2xl);
     position: relative;
+    width: 74%;
 }
 
 .hero-buttons::before {
@@ -379,13 +380,15 @@ a {
 
 .hero-social {
     display: flex;
-    gap: var(--spacing-md);
+    gap: 0.5rem;
     position: relative;
-    padding: var(--spacing-md);
+    padding: 0.3rem 0.5rem;
     border-radius: var(--radius-xl);
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 100%;
+    width: 48%;
 }
 
 .hero-social::before {

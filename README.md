@@ -61,4 +61,4 @@ The portfolio showcases various projects including:
 3. The portfolio is ready to use!
 
 ## License
-© 2024 Hamza Musema. All rights reserved.
+© 2022 Hamza Musema. All rights reserved.
