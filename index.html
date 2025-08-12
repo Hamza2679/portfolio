@@ -17,49 +17,6 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <style>
-    .project-links {
-      display: flex;
-      gap: 0.7em;
-      margin-top: 1em;
-    }
-    .project-links .btn {
-      min-width: 110px;
-      padding: 0.5em 1.1em;
-      font-size: 1em;
-      border-radius: 0.7em;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5em;
-      border: none;
-      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .btn-demo {
-      background: linear-gradient(90deg, #10b981 60%, #34d399 100%);
-      color: #fff;
-      border: none;
-      box-shadow: 0 2px 8px rgba(16,185,129,0.08);
-    }
-    .btn-demo:hover {
-      background: linear-gradient(90deg, #059669 60%, #10b981 100%);
-      color: #fff;
-    }
-    .btn-github {
-      background: #23272f;
-      color: #fff;
-      border: none;
-      box-shadow: 0 2px 8px rgba(35,39,47,0.08);
-    }
-    .btn-github:hover {
-      background: #16181d;
-      color: #10b981;
-    }
-    </style>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./img/personalbf.jpg" sizes="32x32">
@@ -73,7 +30,7 @@
 </head>
 <body>
     <!-- Animated Background Canvas -->
-    <canvas id="animated-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;"></canvas>
+    <canvas id="animated-bg"></canvas>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -83,37 +40,37 @@
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="#home" class="nav-link">
-                        <i class="fas fa-home"></i> Home
+                        Home
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#about" class="nav-link">
-                        <i class="fas fa-user"></i> About
+                       About
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#education" class="nav-link">
-                        <i class="fas fa-graduation-cap"></i> Education
+                       Education
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#skills" class="nav-link">
-                        <i class="fas fa-tools"></i> Skills
+                       Skills
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#projects" class="nav-link">
-                        <i class="fas fa-briefcase"></i> Projects
+                     Projects
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#testimonials" class="nav-link">
-                        <i class="fas fa-quote-left"></i> Testimonials
+                      Testimonials
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">
-                        <i class="fas fa-envelope"></i> Contact
+                       Contact
                     </a>
                 </li>
             </ul>
@@ -130,8 +87,8 @@
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <div style="margin-bottom: 1rem;">
-                        <span style="display:inline-block;background:rgba(16,185,129,0.12);color:#10b981;font-weight:600;padding:0.4em 1em;border-radius:1em;font-size:1rem;">
+                    <div class="hero-badge-wrapper">
+                        <span class="hero-availability-badge">
                              currently open for <strong>Remote Work</strong> & <strong>Freelancing</strong>!
                         </span>
                     </div>
@@ -261,11 +218,11 @@
                             <span class="stat-label">Years Experience</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">20+</span>
+                            <span class="stat-number">12+</span>
                             <span class="stat-label">Projects Completed</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">15+</span>
+                            <span class="stat-number">8+</span>
                             <span class="stat-label">Happy Clients</span>
                         </div>
                     </div>
@@ -367,49 +324,22 @@
                     </div>
                 </div>
 
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Database Specialist</h3>
-                    <p>
-                        Expert in database design, management, and optimization. Working with PostgreSQL, 
-                        SQL, and MongoDB for both relational and NoSQL database solutions.
-                    </p>
-                    <div class="skill-tags">
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">MongoDB</span>
-                        <span class="tag">Database Design</span>
-                    </div>
-                </div>
+                
 
                 <div class="skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Mobile Development</h3>
+                    <h3>Mobile Development & Flutter State Management</h3>
                     <p>
-                        Experienced Flutter developer creating cross-platform mobile applications with 
-                        elegant UI/UX and robust functionality for both iOS and Android.
+                        Experienced Flutter developer creating cross‑platform mobile apps with elegant UI/UX and robust functionality
+                        for iOS and Android. Proficient in scalable state management solutions to keep apps maintainable and performant.
                     </p>
                     <div class="skill-tags">
                         <span class="tag">Flutter</span>
                         <span class="tag">Dart</span>
                         <span class="tag">Cross-platform</span>
                         <span class="tag">Mobile UI/UX</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Flutter State Management</h3>
-                    <p>
-                        Proficient in modern state management solutions for Flutter, ensuring scalable and maintainable mobile apps.
-                    </p>
-                    <div class="skill-tags">
                         <span class="tag">BLoC</span>
                         <span class="tag">Riverpod</span>
                         <span class="tag">Provider</span>
@@ -421,7 +351,7 @@
                     <div class="skill-icon">
                         <i class="fab fa-react"></i>
                     </div>
-                    <h3>Frontend Development</h3>
+                    <h3>web Development</h3>
                     <p>
                         Crafting engaging digital experiences with React, building seamless applications 
                         with efficient coding and innovative design patterns.
@@ -431,23 +361,6 @@
                         <span class="tag">JavaScript</span>
                         <span class="tag">HTML/CSS</span>
                         <span class="tag">Modern UI/UX</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Team & Communication</h3>
-                    <p>
-                        Strong team player with excellent communication skills, leadership, and experience in collaborative environments.
-                    </p>
-                    <div class="skill-tags">
-                        <span class="tag">Team Collaboration</span>
-                        <span class="tag">Good Communication</span>
-                        <span class="tag">Problem Solving</span>
-                        <span class="tag">Leadership</span>
-                        <span class="tag">Agile/Scrum</span>
                     </div>
                 </div>
 
@@ -466,158 +379,47 @@
                         <span class="tag">Prototyping</span>
                     </div>
                 </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database Specialist</h3>
+                    <p>
+                        Expert in database design, management, and optimization. Working with PostgreSQL, 
+                        SQL, and MongoDB for both relational and NoSQL database solutions.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Database Design</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Team & Communication</h3>
+                    <p>
+                        Strong team player with excellent communication skills, leadership, and experience in collaborative environments.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="tag">Team Collaboration</span>
+                        <span class="tag">Good Communication</span>
+                        <span class="tag">Problem Solving</span>
+                        <span class="tag">Leadership</span>
+                        <span class="tag">Agile/Scrum</span>
+                    </div>
+                </div>
+
+               
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
         <section id="projects" class="projects">
-            <style>
-                        .modern-projects-nav {
-                            display: flex;
-                            justify-content: center;
-                            gap: 1.2em;
-                            margin-bottom: 2.5em;
-                        }
-                        .modern-projects-nav-btn {
-                            background: rgba(16,185,129,0.10);
-                            border: none;
-                            color: #10b981;
-                            padding: 0.7em 2.2em;
-                            border-radius: 2em;
-                            font-size: 1.08em;
-                            font-weight: 600;
-                            cursor: pointer;
-                            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-                            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-                            letter-spacing: 0.02em;
-                        }
-                        .modern-projects-nav-btn.active, .modern-projects-nav-btn:hover {
-                            background: linear-gradient(90deg, #10b981 60%, #34d399 100%);
-                            color: #fff;
-                            box-shadow: 0 4px 18px rgba(16,185,129,0.13);
-                        }
-                .modern-projects-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-                    gap: 2.2em;
-                }
-                .modern-project-card {
-                    background: rgba(30,40,80,0.7);
-                    border-radius: 1.3em;
-                    overflow: hidden;
-                    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-                    transition: transform 0.25s, box-shadow 0.25s, border 0.25s;
-                    border: 1.5px solid rgba(255,255,255,0.09);
-                    display: flex;
-                    flex-direction: column;
-                    position: relative;
-                    min-height: 420px;
-                }
-                .modern-project-card:hover {
-                    transform: translateY(-10px) scale(1.025);
-                    box-shadow: 0 16px 40px rgba(255,138,0,0.13), 0 8px 32px rgba(0,0,0,0.22);
-                    border: 1.5px solid rgba(255,255,255,0.18);
-                }
-                .modern-project-image {
-                    height: 180px;
-                    background: linear-gradient(45deg, #0f1b31, #1c3b5e);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    position: relative;
-                }
-                .modern-project-icon {
-                    font-size: 3.5rem;
-                    color: rgba(255,255,255,0.13);
-                }
-                .modern-category-chip {
-                    position: absolute;
-                    top: 18px;
-                    right: 18px;
-                    background: linear-gradient(90deg, #ff8a00, #ff0080);
-                    color: #fff;
-                    padding: 0.35em 1.1em;
-                    border-radius: 1.2em;
-                    font-size: 0.92em;
-                    font-weight: 600;
-                    z-index: 2;
-                    box-shadow: 0 2px 8px rgba(255,138,0,0.13);
-                }
-                .modern-project-content {
-                    padding: 2em 1.5em 1.5em 1.5em;
-                    flex-grow: 1;
-                    display: flex;
-                    flex-direction: column;
-                }
-                .modern-project-content h3 {
-                    font-size: 1.35rem;
-                    margin-bottom: 0.7em;
-                    color: #fff;
-                }
-                .modern-project-content p {
-                    color: #d1d1d1;
-                    margin-bottom: 1.2em;
-                    flex-grow: 1;
-                }
-                .modern-project-tech {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 0.6em;
-                    margin-bottom: 1.2em;
-                }
-                .modern-tech-tag {
-                    background: rgba(0,150,255,0.18);
-                    color: #4db8ff;
-                    padding: 0.32em 1em;
-                    border-radius: 1.2em;
-                    font-size: 0.89em;
-                    font-weight: 600;
-                }
-                .modern-project-links {
-                    display: flex;
-                    gap: 0.7em;
-                    flex-wrap: wrap;
-                }
-                .modern-btn {
-                    display: inline-flex;
-                    align-items: center;
-                    padding: 0.7em 1.5em;
-                    border-radius: 2em;
-                    font-weight: 600;
-                    text-decoration: none;
-                    font-size: 0.98em;
-                    border: none;
-                    transition: all 0.2s;
-                }
-                .modern-btn i { margin-right: 8px; }
-                        .modern-btn-demo {
-                            background: linear-gradient(90deg, #10b981 60%, #34d399 100%);
-                            color: #fff;
-                            border: none;
-                            box-shadow: 0 2px 8px rgba(16,185,129,0.08);
-                        }
-                        .modern-btn-demo:hover {
-                            background: linear-gradient(90deg, #059669 60%, #10b981 100%);
-                            color: #fff;
-                        }
-                        .modern-btn-github {
-                            background: #23272f;
-                            color: #fff;
-                            border: none;
-                            box-shadow: 0 2px 8px rgba(35,39,47,0.08);
-                        }
-                        .modern-btn-github:hover {
-                            background: #16181d;
-                            color: #10b981;
-                        }
-                @media (max-width: 900px) {
-                    .modern-projects-grid { grid-template-columns: 1fr 1fr; }
-                }
-                @media (max-width: 600px) {
-                    .modern-projects-grid { grid-template-columns: 1fr; }
-                }
-            </style>
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Latest Projects</h2>
@@ -637,7 +439,7 @@
                                         <span class="modern-project-icon"><i class="fas fa-store"></i></span>
                                     </div>
                                     <div class="modern-project-content">
-                                        <h3>HudHud Express E-Commerce App</h3>
+                                        <h3>comercepal E-Commerce App</h3>
                                         <p>A full-featured e-commerce mobile app for HudHud Express, offering product browsing, cart, checkout, order tracking, and more. Available on Google Play Store.</p>
                                         <div class="modern-project-tech">
                                             <span class="modern-tech-tag">Flutter</span>
@@ -791,24 +593,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modern-project-card" data-category="web">
-                        <div class="modern-category-chip">Web</div>
-                        <div class="modern-project-image">
-                            <span class="modern-project-icon"><i class="fas fa-globe"></i></span>
-                        </div>
-                        <div class="modern-project-content">
-                            <h3>Angler Trading Website</h3>
-                            <p>A modern, responsive website built for Angler Trading to showcase their global trading services, products, and company information. Features a clean UI, product catalog, and contact forms.</p>
-                            <div class="modern-project-tech">
-                                <span class="modern-tech-tag">PostgreSQL</span>
-                                <span class="modern-tech-tag">Node.js</span>
-                                <span class="modern-tech-tag">React</span>
-                            </div>
-                            <div class="modern-project-links">
-                                <a href="https://github.com/AbdulsemedM/Global_Link" class="modern-btn modern-btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="modern-project-card" data-category="flutter">
                         <div class="modern-category-chip">Flutter</div>
                         <div class="modern-project-image">
@@ -1073,7 +858,7 @@
                 </div>
                 <div class="footer-social">
                     <a href="https://www.linkedin.com/in/hamza-musema-bb2b34230/" target="_blank" aria-label="LinkedIn">
-                        <i class="</a>fab fa-linkedin"></i>
+                        <i class="fab fa-linkedin"></i>
                     </a>
                     <a href="https://github.com/Hamza2679" target="_blank" aria-label="GitHub">
                         <i class="fab fa-github"></i>
@@ -1101,34 +886,6 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
         <script src="js/config.js"></script>
         <script src="js/main.js"></script>
-        <script>
-        emailjs.init("s1NJbpRsX98iZmwpQ");
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            // Send email
-            emailjs.send("service_qtvxz3p", "template_mhg5ozw", {
-                name,
-                email,
-                message
-            }).then(function(response) {
-                console.log('Email sent successfully:', response);
-                alert('Your message has been sent successfully!');
-                document.getElementById('contactForm').reset();
-            }, function(error) {
-                console.error('Email sending failed:', error);
-                let errorMsg = 'An error occurred while sending your message. Please try again later.';
-                if (error && error.text) {
-                    errorMsg += '\nDetails: ' + error.text;
-                } else if (error && error.status) {
-                    errorMsg += `\nStatus: ${error.status}`;
-                }
-                alert(errorMsg);
-            });
-        });
-        </script>
 
             <!-- Animated background: floating particles -->
             <script>
@@ -1215,7 +972,6 @@
                 });
             });
         });
-        // Default to show all
         navBtns[0].click();
     });
     </script>

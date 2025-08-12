@@ -1,8 +1,10 @@
 // Modern Portfolio JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize EmailJS
-    emailjs.init("s1NJbpRsX98iZmwpQ");
+    // Initialize EmailJS using config
+    if (typeof EMAILJS_USER_ID !== 'undefined' && EMAILJS_USER_ID && window.emailjs) {
+        emailjs.init(EMAILJS_USER_ID);
+    }
 
     // DOM Elements
     const hamburger = document.querySelector('.hamburger');
@@ -96,46 +98,30 @@ document.addEventListener('DOMContentLoaded', function() {
         animatedElements.forEach(el => observer.observe(el));
     });
 
-    // Contact form handling
+    // Contact form handling (aligned with provided example)
     if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            // Show loading state
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            try {
-                const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    message: document.getElementById('message').value
-                };
-                
-                // Send email using EmailJS
-                const response = await emailjs.send(
-                    "service_qtvxz3p", 
-                    "template_mhg5ozw", 
-                    formData
-                );
-                
-                if (response.status === 200) {
-                    showNotification('Message sent successfully!', 'success');
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            emailjs
+                .send(
+                    EMAILJS_SERVICE_ID || 'service_qtvxz3p',
+                    EMAILJS_TEMPLATE_ID || 'template_mhg5ozw',
+                    { name, email, message }
+                )
+                .then(function(response) {
+                    console.log('Email sent successfully:', response);
+                    alert('Your message has been sent successfully!');
                     contactForm.reset();
-                } else {
-                    throw new Error('Failed to send message');
-                }
-            } catch (error) {
-                console.error('Email sending failed:', error);
-                showNotification('Failed to send message. Please try again.', 'error');
-            } finally {
-                // Reset button state
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }
+                })
+                .catch(function(error) {
+                    console.error('Email sending failed:', error);
+                    alert('An error occurred while sending your message. Please try again later.');
+                });
         });
     }
 
