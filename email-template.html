@@ -1,0 +1,48 @@
+<!-- Copy this template code to your EmailJS dashboard -->
+<div style="font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background-color: #f3f4f6; padding: 40px 20px;">
+  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden;">
+
+    <!-- Header -->
+    <div style="background: linear-gradient(90deg, #6366F1, #4F46E5); color: #ffffff; text-align: center; padding: 30px 20px;">
+      <h2 style="margin: 0; font-size: 24px; letter-spacing: 0.5px;">💬 New Portfolio Message</h2>
+      <p style="margin: 8px 0 0; font-size: 14px; opacity: 0.9;">Someone reached out via your contact form</p>
+    </div>
+
+    <!-- Content -->
+    <div style="padding: 30px;">
+      <p style="font-size: 16px; color: #374151; margin-bottom: 25px;">
+        Hi there 👋,<br>
+        You've received a new message from your portfolio contact form. Here are the details:
+      </p>
+
+      <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 15px 18px; margin-bottom: 15px;">
+        <p style="margin: 0; font-size: 15px; color: #111827;"><strong>👤 Name:</strong> {{from_name}}</p>
+      </div>
+
+      <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 15px 18px; margin-bottom: 15px;">
+        <p style="margin: 0; font-size: 15px; color: #111827;"><strong>📧 Email:</strong> {{from_email}}</p>
+      </div>
+
+      <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 15px 18px;">
+        <p style="margin: 0; font-size: 15px; color: #111827; white-space: pre-line;">
+          <strong>📝 Message:</strong><br>{{message}}
+        </p>
+      </div>
+
+      <!-- Button -->
+      <div style="text-align: center; margin-top: 35px;">
+        <a href="mailto:{{from_email}}" 
+           style="background: linear-gradient(90deg, #4F46E5, #6366F1); color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-size: 15px; font-weight: 500; display: inline-block;">
+          ✉️ Reply to {{from_name}}
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="background-color: #F3F4F6; text-align: center; padding: 18px; font-size: 13px; color: #6B7280;">
+      <p style="margin: 0;">This message was sent automatically from your portfolio contact form.</p>
+      <p style="margin: 5px 0 0; font-size: 12px;">© {{current_year}} Your Portfolio. All rights reserved.</p>
+    </div>
+
+  </div>
+</div>

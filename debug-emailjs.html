@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Debug Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; background: #f5f5f5; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .debug-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .warning { background-color: #fff3cd; border-color: #ffeaa7; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+        .log { background: #f8f9fa; padding: 10px; border-radius: 3px; font-family: monospace; white-space: pre-wrap; max-height: 300px; overflow-y: auto; }
+        .form-group { margin: 10px 0; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 EmailJS Debug Tool</h1>
+        <p>This tool will help diagnose EmailJS configuration issues.</p>
+        
+        <div class="debug-section" id="config-status">
+            <h3>📋 Configuration Status</h3>
+            <div id="config-results"></div>
+        </div>
+        
+        <div class="debug-section" id="connection-status">
+            <h3>🔌 Connection Test</h3>
+            <button onclick="testConnection()">Test EmailJS Connection</button>
+            <div id="connection-results"></div>
+        </div>
+        
+        <div class="debug-section" id="template-test">
+            <h3>📧 Template Test</h3>
+            <div class="form-group">
+                <label>Test Name:</label>
+                <input type="text" id="testName" value="Test User" />
+            </div>
+            <div class="form-group">
+                <label>Test Email:</label>
+                <input type="email" id="testEmail" value="test@example.com" />
+            </div>
+            <div class="form-group">
+                <label>Test Message:</label>
+                <textarea id="testMessage">This is a test message from the debug tool.</textarea>
+            </div>
+            <button onclick="sendTestEmail()">Send Test Email</button>
+            <div id="send-results"></div>
+        </div>
+        
+        <div class="debug-section" id="troubleshooting">
+            <h3>🛠️ Troubleshooting Tips</h3>
+            <div id="troubleshooting-tips"></div>
+        </div>
+    </div>
+
+    <!-- Load EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/config.js"></script>
+    
+    <script>
+        function log(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : 'warning';
+            element.innerHTML += `<div class="status ${className}">[${timestamp}] ${message}</div>`;
+        }
+
+        function clearLog(elementId) {
+            document.getElementById(elementId).innerHTML = '';
+        }
+
+        function testConfiguration() {
+            clearLog('config-results');
+            
+            const checks = [
+                { name: 'EmailJS Library', test: () => typeof emailjs !== 'undefined' },
+                { name: 'EMAILJS_USER_ID', test: () => typeof EMAILJS_USER_ID !== 'undefined' && EMAILJS_USER_ID.length > 0 },
+                { name: 'EMAILJS_SERVICE_ID', test: () => typeof EMAILJS_SERVICE_ID !== 'undefined' && EMAILJS_SERVICE_ID.length > 0 },
+                { name: 'EMAILJS_TEMPLATE_ID', test: () => typeof EMAILJS_TEMPLATE_ID !== 'undefined' && EMAILJS_TEMPLATE_ID.length > 0 },
+                { name: 'EMAILJS_TO_EMAIL', test: () => typeof EMAILJS_TO_EMAIL !== 'undefined' && EMAILJS_TO_EMAIL.length > 0 }
+            ];
+
+            let allPassed = true;
+            checks.forEach(check => {
+                if (check.test()) {
+                    log('config-results', `✅ ${check.name}: OK`, 'success');
+                } else {
+                    log('config-results', `❌ ${check.name}: Missing or empty`, 'error');
+                    allPassed = false;
+                }
+            });
+
+            if (allPassed) {
+                log('config-results', '🎉 All configuration checks passed!', 'success');
+            } else {
+                log('config-results', '⚠️ Some configuration issues found. Check the errors above.', 'error');
+            }
+
+            // Show current values
+            log('config-results', `\n📊 Current Values:`, 'info');
+            log('config-results', `USER_ID: ${EMAILJS_USER_ID || 'NOT SET'}`, 'info');
+            log('config-results', `SERVICE_ID: ${EMAILJS_SERVICE_ID || 'NOT SET'}`, 'info');
+            log('config-results', `TEMPLATE_ID: ${EMAILJS_TEMPLATE_ID || 'NOT SET'}`, 'info');
+            log('config-results', `TO_EMAIL: ${EMAILJS_TO_EMAIL || 'NOT SET'}`, 'info');
+        }
+
+        function testConnection() {
+            clearLog('connection-results');
+            
+            if (typeof emailjs === 'undefined') {
+                log('connection-results', '❌ EmailJS library not loaded', 'error');
+                return;
+            }
+            
+            if (typeof EMAILJS_USER_ID === 'undefined') {
+                log('connection-results', '❌ EMAILJS_USER_ID not defined', 'error');
+                return;
+            }
+            
+            try {
+                log('connection-results', '🔄 Initializing EmailJS...', 'info');
+                emailjs.init({ publicKey: EMAILJS_USER_ID });
+                log('connection-results', '✅ EmailJS initialized successfully', 'success');
+                log('connection-results', '✅ Connection test passed', 'success');
+            } catch (error) {
+                log('connection-results', `❌ Connection test failed: ${error.message}`, 'error');
+            }
+        }
+
+        function sendTestEmail() {
+            clearLog('send-results');
+            
+            const name = document.getElementById('testName').value;
+            const email = document.getElementById('testEmail').value;
+            const message = document.getElementById('testMessage').value;
+            
+            if (!name || !email || !message) {
+                log('send-results', '❌ Please fill in all test fields', 'error');
+                return;
+            }
+            
+            if (typeof emailjs === 'undefined') {
+                log('send-results', '❌ EmailJS library not loaded', 'error');
+                return;
+            }
+            
+            if (typeof EMAILJS_USER_ID === 'undefined' || typeof EMAILJS_SERVICE_ID === 'undefined' || typeof EMAILJS_TEMPLATE_ID === 'undefined') {
+                log('send-results', '❌ Missing required configuration', 'error');
+                return;
+            }
+            
+            log('send-results', '🔄 Sending test email...', 'info');
+            log('send-results', `Service: ${EMAILJS_SERVICE_ID}`, 'info');
+            log('send-results', `Template: ${EMAILJS_TEMPLATE_ID}`, 'info');
+            log('send-results', `To: ${EMAILJS_TO_EMAIL}`, 'info');
+            
+            const templateParams = {
+                name: name,
+                from_name: name,
+                email: email,
+                reply_to: email,
+                message: message,
+                to_email: EMAILJS_TO_EMAIL
+            };
+            
+            log('send-results', `Template params: ${JSON.stringify(templateParams, null, 2)}`, 'info');
+            
+            emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                templateParams,
+                EMAILJS_USER_ID
+            )
+            .then(function(response) {
+                log('send-results', '✅ Test email sent successfully!', 'success');
+                log('send-results', `Status: ${response.status}`, 'success');
+                log('send-results', `Response: ${JSON.stringify(response, null, 2)}`, 'success');
+            })
+            .catch(function(error) {
+                log('send-results', '❌ Test email failed!', 'error');
+                log('send-results', `Error: ${error.message || 'Unknown error'}`, 'error');
+                log('send-results', `Status: ${error.status || 'Unknown'}`, 'error');
+                log('send-results', `Text: ${error.text || 'No additional info'}`, 'error');
+                log('send-results', `Full error: ${JSON.stringify(error, null, 2)}`, 'error');
+            });
+        }
+
+        function showTroubleshootingTips() {
+            const tips = [
+                "1. Check your EmailJS dashboard to ensure your service is active",
+                "2. Verify your template ID exists and is published",
+                "3. Make sure your template uses the correct variable names: {{name}}, {{email}}, {{message}}",
+                "4. Check that your public key (USER_ID) is correct",
+                "5. Ensure your service is properly configured in EmailJS dashboard",
+                "6. Check browser console for detailed error messages",
+                "7. Try refreshing the page and testing again",
+                "8. Verify your email template is set to receive emails at the correct address"
+            ];
+            
+            const tipsHtml = tips.map(tip => `<div class="status warning">${tip}</div>`).join('');
+            document.getElementById('troubleshooting-tips').innerHTML = tipsHtml;
+        }
+
+        // Run tests on page load
+        window.addEventListener('load', function() {
+            testConfiguration();
+            showTroubleshootingTips();
+        });
+    </script>
+</body>
+</html>

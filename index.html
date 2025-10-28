@@ -883,9 +883,162 @@
     </button>
 
     <!-- JavaScript -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-        <script src="js/config.js"></script>
-        <script src="js/main.js"></script>
+    <!-- Use the recommended EmailJS v4 browser SDK -->
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+                <script src="js/config.js"></script>
+                <script src="js/main.js"></script>
+
+                <!-- Contact form: EmailJS handler -->
+                <script>
+                        (function(){
+                    if (!window.emailjs) {
+                        console.warn('EmailJS SDK not loaded');
+                        return;
+                    }
+                    // Initialize EmailJS (public key)
+                            try {
+                                if (typeof EMAILJS_USER_ID !== 'undefined' && EMAILJS_USER_ID) {
+                                    emailjs.init(EMAILJS_USER_ID);
+                                } else {
+                                    // Fallback to previous key if config is missing
+                                    emailjs.init('s1NJbpRsX98iZmwpQ');
+                                }
+                            } catch (e) {
+                                console.error('Failed to initialize EmailJS:', e);
+                            }
+
+                    const form = document.getElementById('contactForm');
+                    if (!form) return;
+
+                    // Create or reuse status element
+                    let statusEl = document.getElementById('contactStatus');
+                    if (!statusEl) {
+                        statusEl = document.createElement('div');
+                        statusEl.id = 'contactStatus';
+                        statusEl.className = 'contact-status';
+                        // Small visual spacing
+                        statusEl.style.marginTop = '0.75rem';
+                        statusEl.style.fontSize = '0.95rem';
+                        form.appendChild(statusEl);
+                    }
+
+                    function setStatus(text, isError) {
+                        statusEl.textContent = text;
+                        statusEl.style.color = isError ? '#ff6b6b' : '#7ed957';
+                    }
+
+                                // Ensure optional to_email hidden field exists if configured
+                                try {
+                                    if (typeof EMAILJS_TO_EMAIL !== 'undefined' && EMAILJS_TO_EMAIL) {
+                                        // Ensure to_email (preferred)
+                                        let toEmailInput = form.querySelector('input[name="to_email"]');
+                                        if (!toEmailInput) {
+                                            toEmailInput = document.createElement('input');
+                                            toEmailInput.type = 'hidden';
+                                            toEmailInput.name = 'to_email';
+                                            form.appendChild(toEmailInput);
+                                        }
+                                        toEmailInput.value = EMAILJS_TO_EMAIL;
+                                    }
+                                } catch (e) {
+                                    // ignore if config not present
+                                }
+
+                                // Ensure hidden aliases commonly used by EmailJS templates
+                                function ensureHidden(name) {
+                                    let el = form.querySelector(`input[name="${name}"]`);
+                                    if (!el) {
+                                        el = document.createElement('input');
+                                        el.type = 'hidden';
+                                        el.name = name;
+                                        form.appendChild(el);
+                                    }
+                                    return el;
+                                }
+
+                                form.addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const name = (document.getElementById('name') || {}).value || '';
+                        const email = (document.getElementById('email') || {}).value || '';
+                        const message = (document.getElementById('message') || {}).value || '';
+
+                        if (!name.trim() || !email.trim() || !message.trim()) {
+                            setStatus('Please provide your name, email and a message.', true);
+                            return;
+                        }
+
+                        const submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('input[type="submit"]');
+                        if (submitBtn) {
+                            submitBtn.disabled = true;
+                            submitBtn.dataset.origText = submitBtn.textContent || submitBtn.value || '';
+                            if (submitBtn.tagName === 'BUTTON') submitBtn.textContent = 'Sending...';
+                            else submitBtn.value = 'Sending...';
+                        }
+
+                        // Prepare debug info about routing
+                        const toEmailDebug = (typeof EMAILJS_TO_EMAIL !== 'undefined' && EMAILJS_TO_EMAIL) ? EMAILJS_TO_EMAIL : '';
+                        setStatus(`Sending message please wait...`, false);
+
+                        // Mirror values into common EmailJS variables expected by many templates
+                        // from_name and reply_to are frequently used
+                        const fromNameEl = ensureHidden('from_name');
+                        fromNameEl.value = name;
+                        const replyToEl = ensureHidden('reply_to');
+                        replyToEl.value = email;
+                        const fromEmailEl = ensureHidden('from_email');
+                        fromEmailEl.value = email;
+                        // Optional subject for clearer inbox threads
+                        const subjectEl = ensureHidden('subject');
+                        subjectEl.value = `New message from ${name} via Portfolio`;
+                        // Optional current year for templates
+                        const yearEl = ensureHidden('current_year');
+                        yearEl.value = new Date().getFullYear();
+
+                                    // Send using explicit params (keeps user's email intact and routes to your inbox)
+                                    const serviceId = (typeof EMAILJS_SERVICE_ID !== 'undefined' && EMAILJS_SERVICE_ID) ? EMAILJS_SERVICE_ID : 'service_qtvxz3p';
+                                    const templateId = (typeof EMAILJS_TEMPLATE_ID !== 'undefined' && EMAILJS_TEMPLATE_ID) ? EMAILJS_TEMPLATE_ID : 'template_mhg5ozw';
+                                    const params = {
+                                        // Destination (use both in case template expects one or the other)
+                                        to_email: (typeof EMAILJS_TO_EMAIL !== 'undefined' && EMAILJS_TO_EMAIL) ? EMAILJS_TO_EMAIL : 'replynon115@gmail.com',
+                                        email: (typeof EMAILJS_TO_EMAIL !== 'undefined' && EMAILJS_TO_EMAIL) ? EMAILJS_TO_EMAIL : 'replynon115@gmail.com',
+                                        // Sender details from user
+                                        from_name: name,
+                                        from_email: email,
+                                        reply_to: email,
+                                        // Message content
+                                        message: message,
+                                        subject: `New message from ${name} via Portfolio`,
+                                        current_year: new Date().getFullYear()
+                                    };
+                                    emailjs.send(serviceId, templateId, params)
+                        .then(function(response) {
+                            console.log('Email sent successfully:', response);
+                            setStatus('Message sent — thank you! I will get back to you shortly.', false);
+                            form.reset();
+                            if (submitBtn) {
+                                if (submitBtn.tagName === 'BUTTON') submitBtn.textContent = submitBtn.dataset.origText || 'Send Message';
+                                else submitBtn.value = submitBtn.dataset.origText || 'Send Message';
+                                submitBtn.disabled = false;
+                            }
+                        })
+                        .catch(function(error) {
+                            console.error('Email sending failed:', error);
+                            let detail = '';
+                            try {
+                                if (error && error.text) detail = error.text;
+                                else if (error && error.status) detail = 'Status: ' + error.status;
+                                else if (typeof error === 'string') detail = error;
+                            } catch (e) { /* ignore */ }
+                            setStatus('Failed to send message. ' + (detail ? ('Details: ' + detail) : 'Please check console for details.'), true);
+                            if (submitBtn) {
+                                if (submitBtn.tagName === 'BUTTON') submitBtn.textContent = submitBtn.dataset.origText || 'Send Message';
+                                else submitBtn.value = submitBtn.dataset.origText || 'Send Message';
+                                submitBtn.disabled = false;
+                            }
+                        });
+                    });
+                })();
+                </script>
 
             <!-- Animated background: floating particles -->
             <script>

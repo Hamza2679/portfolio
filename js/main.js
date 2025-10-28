@@ -3,7 +3,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize EmailJS using config
     if (typeof EMAILJS_USER_ID !== 'undefined' && EMAILJS_USER_ID && window.emailjs) {
-        emailjs.init(EMAILJS_USER_ID);
+        // Use v4 SDK syntax: init with options object containing publicKey
+        emailjs.init({ publicKey: EMAILJS_USER_ID });
+        console.log('EmailJS initialized with public key:', EMAILJS_USER_ID);
+    } else {
+        console.error('EmailJS initialization failed - missing USER_ID or emailjs library');
     }
 
     // DOM Elements
@@ -92,38 +96,93 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe elements for animation
-    document.addEventListener('DOMContentLoaded', () => {
-        const animatedElements = document.querySelectorAll('[data-animate]');
-        animatedElements.forEach(el => observer.observe(el));
-    });
-
-    // Contact form handling (aligned with provided example)
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            emailjs
-                .send(
-                    EMAILJS_SERVICE_ID || 'service_qtvxz3p',
-                    EMAILJS_TEMPLATE_ID || 'template_mhg5ozw',
-                    { name, email, message }
-                )
-                .then(function(response) {
-                    console.log('Email sent successfully:', response);
-                    alert('Your message has been sent successfully!');
-                    contactForm.reset();
-                })
-                .catch(function(error) {
-                    console.error('Email sending failed:', error);
-                    alert('An error occurred while sending your message. Please try again later.');
-                });
+    document.addEventListener('DOMContentLoaded', function () {
+        // Ensure EmailJS SDK loaded
+        if (!window.emailjs) {
+          console.error('EmailJS SDK not loaded. Add <script src="https://cdn.emailjs.com/dist/email.min.js"></script> before your script.');
+          return;
+        }
+      
+        // Try to init (not strictly required if we pass publicKey to send())
+        if (typeof EMAILJS_USER_ID !== 'undefined' && EMAILJS_USER_ID) {
+          try {
+            emailjs.init(EMAILJS_USER_ID); // simple init form
+            console.log('EmailJS init with public key:', EMAILJS_USER_ID);
+          } catch (err) {
+            console.warn('emailjs.init warning:', err);
+          }
+        } else {
+          console.warn('EMAILJS_USER_ID not set.');
+        }
+      
+        // Safely get DOM elements (guard against null)
+        const contactForm = document.getElementById('contactForm');
+        const hamburger = document.querySelector('.hamburger');
+        const backToTopBtn = document.getElementById('backToTop');
+      
+        // Example: guard before using
+        if (hamburger) {
+          hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu) navMenu.classList.toggle('active');
+          });
+        }
+      
+        if (backToTopBtn) {
+          backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+      
+        if (!contactForm) {
+          console.warn('Contact form not found (#contactForm). Email sending disabled.');
+          return;
+        }
+      
+        contactForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+      
+          const name = (document.getElementById('name') || {}).value?.trim() || '';
+          const email = (document.getElementById('email') || {}).value?.trim() || '';
+          const message = (document.getElementById('message') || {}).value?.trim() || '';
+      
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+          if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+          }
+      
+          if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+            console.error('Missing EMAILJS_SERVICE_ID or EMAILJS_TEMPLATE_ID in config.');
+            alert('Email configuration missing.');
+            return;
+          }
+      
+          const templateParams = {
+            from_name: name,
+            from_email: email,
+            message: message,
+            current_year: new Date().getFullYear(),
+            to_email: EMAILJS_TO_EMAIL
+          };
+      
+          console.log('Sending email with params:', templateParams);
+      
+          // Pass the public key as a fourth parameter to be safe:
+          emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_USER_ID)
+            .then(function (res) {
+              console.log('Email sent', res);
+              alert('Your message has been sent — thank you!');
+              contactForm.reset();
+            })
+            .catch(function (err) {
+              console.error('Email send error:', err);
+              alert('Failed to send message. See console for details.');
+            });
         });
-    }
+      });
+      
 
     // Notification system
     function showNotification(message, type = 'info') {

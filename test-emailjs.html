@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .log { background: #f8f9fa; padding: 10px; border-radius: 3px; font-family: monospace; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>EmailJS Configuration Test</h1>
+    
+    <div class="test-section" id="config-test">
+        <h3>Configuration Check</h3>
+        <div id="config-results"></div>
+    </div>
+    
+    <div class="test-section" id="connection-test">
+        <h3>Connection Test</h3>
+        <button onclick="testConnection()">Test EmailJS Connection</button>
+        <div id="connection-results"></div>
+    </div>
+    
+    <div class="test-section" id="send-test">
+        <h3>Send Test Email</h3>
+        <button onclick="sendTestEmail()">Send Test Email</button>
+        <div id="send-results"></div>
+    </div>
+
+    <!-- Load EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/config.js"></script>
+    
+    <script>
+        function log(elementId, message, isError = false) {
+            const element = document.getElementById(elementId);
+            const timestamp = new Date().toLocaleTimeString();
+            element.innerHTML += `[${timestamp}] ${message}\n`;
+            element.parentElement.className = `test-section ${isError ? 'error' : 'success'}`;
+        }
+
+        function testConfiguration() {
+            const configResults = document.getElementById('config-results');
+            configResults.innerHTML = '';
+            
+            // Check if config variables are defined
+            if (typeof EMAILJS_USER_ID !== 'undefined') {
+                log('config-results', `✓ EMAILJS_USER_ID: ${EMAILJS_USER_ID}`);
+            } else {
+                log('config-results', '✗ EMAILJS_USER_ID is not defined', true);
+            }
+            
+            if (typeof EMAILJS_SERVICE_ID !== 'undefined') {
+                log('config-results', `✓ EMAILJS_SERVICE_ID: ${EMAILJS_SERVICE_ID}`);
+            } else {
+                log('config-results', '✗ EMAILJS_SERVICE_ID is not defined', true);
+            }
+            
+            if (typeof EMAILJS_TEMPLATE_ID !== 'undefined') {
+                log('config-results', `✓ EMAILJS_TEMPLATE_ID: ${EMAILJS_TEMPLATE_ID}`);
+            } else {
+                log('config-results', '✗ EMAILJS_TEMPLATE_ID is not defined', true);
+            }
+            
+            if (typeof EMAILJS_TO_EMAIL !== 'undefined') {
+                log('config-results', `✓ EMAILJS_TO_EMAIL: ${EMAILJS_TO_EMAIL}`);
+            } else {
+                log('config-results', '✗ EMAILJS_TO_EMAIL is not defined', true);
+            }
+            
+            // Check if EmailJS library is loaded
+            if (typeof emailjs !== 'undefined') {
+                log('config-results', '✓ EmailJS library loaded successfully');
+            } else {
+                log('config-results', '✗ EmailJS library not loaded', true);
+            }
+        }
+
+        function testConnection() {
+            const connectionResults = document.getElementById('connection-results');
+            connectionResults.innerHTML = '';
+            
+            if (typeof emailjs === 'undefined') {
+                log('connection-results', 'EmailJS library not loaded', true);
+                return;
+            }
+            
+            if (typeof EMAILJS_USER_ID === 'undefined') {
+                log('connection-results', 'EMAILJS_USER_ID not defined', true);
+                return;
+            }
+            
+            try {
+                emailjs.init({ publicKey: EMAILJS_USER_ID });
+                log('connection-results', 'EmailJS initialized successfully');
+                log('connection-results', 'Connection test passed');
+            } catch (error) {
+                log('connection-results', `Connection test failed: ${error.message}`, true);
+            }
+        }
+
+        function sendTestEmail() {
+            const sendResults = document.getElementById('send-results');
+            sendResults.innerHTML = '';
+            
+            if (typeof emailjs === 'undefined') {
+                log('send-results', 'EmailJS library not loaded', true);
+                return;
+            }
+            
+            if (typeof EMAILJS_USER_ID === 'undefined' || typeof EMAILJS_SERVICE_ID === 'undefined' || typeof EMAILJS_TEMPLATE_ID === 'undefined') {
+                log('send-results', 'Missing required configuration', true);
+                return;
+            }
+            
+            log('send-results', 'Sending test email...');
+            
+            emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    name: 'Test User',
+                    from_name: 'Test User',
+                    email: 'test@example.com',
+                    reply_to: 'test@example.com',
+                    message: 'This is a test email from your portfolio contact form.',
+                    to_email: EMAILJS_TO_EMAIL
+                },
+                EMAILJS_USER_ID
+            )
+            .then(function(response) {
+                log('send-results', `Test email sent successfully! Status: ${response.status}`);
+                log('send-results', `Response: ${JSON.stringify(response)}`);
+            })
+            .catch(function(error) {
+                log('send-results', `Test email failed: ${error.message}`, true);
+                log('send-results', `Error details: ${JSON.stringify(error)}`, true);
+            });
+        }
+
+        // Run configuration test on page load
+        window.addEventListener('load', function() {
+            testConfiguration();
+        });
+    </script>
+</body>
+</html>
