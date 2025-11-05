@@ -18,16 +18,18 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Reduced cache for CSS/JS to allow faster updates
 [[headers]]
   for = "*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=3600, must-revalidate"
 
 [[headers]]
   for = "*.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=3600, must-revalidate"
 
+# Longer cache for images (these change less frequently)
 [[headers]]
   for = "*.jpg"
   [headers.values]
@@ -42,4 +44,15 @@
   for = "*.svg"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Force cache clearing for chat widget files
+[[headers]]
+  for = "/chat-widget.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/chat-widget.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
