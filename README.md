@@ -1,151 +1,357 @@
-# Hamza Musema - Portfolio
+# Hamza Musema - Portfolio Website
 
-## About Me
-I'm Hamza Musema, a passionate Full Stack Developer with 5+ years of experience specializing in backend development, database management, and mobile development. I graduated with very great distinction in Computer Science and Engineering from Adama Science and Technology University.
+A modern, responsive portfolio website featuring an AI-powered chat assistant. Built with HTML, CSS, JavaScript, and a Node.js backend powered by OpenRouter AI.
 
-## Skills & Expertise
+## 🌐 Live Demo
 
-### Backend Development
-- **Node.js** & **Express.js** - Building robust RESTful APIs and microservices
-- **Database Management** - Expert in PostgreSQL, SQL, and MongoDB
-- **API Development** - RESTful APIs, authentication, and data validation
+- **Portfolio**: https://hamzamussema.netlify.app
+- **Backend API**: https://port-back-pa9x.onrender.com
+- **Health Check**: https://port-back-pa9x.onrender.com/api/health
 
-### Mobile Development
-- **Flutter** & **Dart** - Cross-platform mobile application development
-- **Mobile UI/UX** - Creating elegant and functional mobile interfaces
+## ✨ Features
 
-### Frontend Development
-- **React.js** - Modern web application development
-- **JavaScript/HTML/CSS** - Frontend technologies and responsive design
+### Portfolio Website
+- **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
+- **Modern UI/UX** - Beautiful animations, smooth scrolling, and intuitive navigation
+- **Animated Background** - Dynamic canvas-based background effects
+- **Contact Form** - Integrated with EmailJS for seamless communication
+- **SEO Optimized** - Meta tags, structured data, and semantic HTML
+- **Fast Performance** - Optimized assets and efficient loading
 
-### Database Specialization
-- **PostgreSQL** - Relational database design and optimization
-- **MongoDB** - NoSQL database solutions
-- **SQL** - Database querying and management
+### AI Chat Assistant 🤖
+- **Intelligent Responses** - Powered by OpenRouter API (GPT-4o-mini)
+- **Modern UI** - Beautiful chat widget with animations and smooth interactions
+- **Knowledge Base** - Comprehensive information about skills, projects, and experience
+- **Real-time Communication** - Instant responses with typing indicators
+- **Conversation History** - Local storage for chat history persistence
+- **Mobile Responsive** - Optimized for mobile devices
 
-## Education
-- **Bachelor of Computer Science and Engineering**
-- **Adama Science and Technology University**
-- Graduated with Very Great Distinction
+## 🛠️ Technologies Used
 
-## Projects
-The portfolio showcases various projects including:
-- Mobile applications built with Flutter
-- Backend APIs using Node.js and Express
-- Full-stack web applications with React
-- Database-driven applications
+### Frontend
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styling with CSS variables and animations
+- **JavaScript (ES6+)** - Vanilla JS for interactivity
+- **Font Awesome** - Icon library
+- **Google Fonts (Inter)** - Typography
+- **EmailJS** - Contact form integration
 
-## Contact
-- **Email**: hamzamusema26@gmail.com
-- **Phone**: +251940315799, +251703169491
-- **LinkedIn**: [Hamza Musema](https://www.linkedin.com/in/hamza-musema-bb2b34230/)
-- **GitHub**: [Hamza2679](https://github.com/Hamza2679)
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **OpenRouter API** - AI chat integration
+- **PostgreSQL** - Database (for knowledge base)
+- **CORS** - Cross-origin resource sharing
 
-## Portfolio Features
-- Responsive design that works on all devices
-- Modern UI with smooth animations
-- Contact form with email integration
-- SEO optimized
-- Fast loading and performance optimized
+### Deployment
+- **Netlify** - Frontend hosting
+- **Render** - Backend API hosting
+- **GitHub** - Version control and CI/CD
 
-## Technologies Used
-- HTML5, CSS3, JavaScript
-- Font Awesome for icons
-- Google Fonts (Inter)
-- EmailJS for contact form
-- Responsive design principles
+## 📁 Project Structure
 
-## Local Setup
-1. Clone the repository
-2. Open `index.html` directly in your browser or use a static server (e.g., VS Code Live Server)
-3. The portfolio is ready to use!
-
-### Contact Form (EmailJS)
-- Configure your EmailJS public key, service ID, and template ID in `js/config.js`:
-  - `EMAILJS_USER_ID`
-  - `EMAILJS_SERVICE_ID`
-  - `EMAILJS_TEMPLATE_ID`
-- Optional: Set `EMAILJS_TO_EMAIL` if your template expects a dynamic recipient (use `{{to_email}}` in EmailJS template).
-
-### Chat Assistant Backend
-#### Enrich the knowledge base (what the chat knows about you)
-The chat uses `server/kb.json` as its source of truth. To add more details about yourself (social media, skills, projects, experience, education, testimonials, FAQ), use the template file:
-
-1) Copy the template and replace the live KB
-```cmd
-copy server\kb.template.json server\kb.json
+```
+portfolio/
+├── index.html              # Main HTML file
+├── css/
+│   └── style.css          # Main stylesheet
+├── js/
+│   ├── main.js            # Main JavaScript
+│   └── config.js          # EmailJS configuration
+├── chat-widget.css         # Chat widget styles
+├── chat-widget.js          # Chat widget functionality
+├── server/
+│   ├── index.js           # Express backend server
+│   ├── kb.json            # Knowledge base for AI
+│   ├── kb.template.json   # KB template
+│   ├── render.yaml        # Render deployment config
+│   └── package.json       # Backend dependencies
+├── netlify.toml           # Netlify configuration
+├── .gitignore            # Git ignore rules
+└── README.md             # This file
 ```
 
-2) Edit `server/kb.json` and fill in your information. Fields include:
-- meta: owner, contact info, location, timezone, languages, availability, social links
-- bio: short and long versions
-- skills: grouped arrays (backend, frontend, mobile, databases, devops, cloud, other)
-- experience: company/client roles, dates, impact, tech
-- education: degree, institution, period, honors
-- certifications: optional list with issuer, year, URL
-- projects: name, category, summary, tech, links (demo/docs/repo), status, year
-- testimonials: author, role, quote
-- faq: common questions and answers
+## 🚀 Getting Started
 
-3) Restart the backend to reload the KB (if running locally):
-```cmd
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- Git
+- OpenRouter API key (or OpenAI API key)
+
+### Local Development
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Hamza2679/portfolio.git
+   cd portfolio
+   ```
+
+2. **Set up the backend**
+   ```bash
+   cd server
+   npm install
+   ```
+
+3. **Configure environment variables**
+   Create `server/.env` file:
+   ```env
+   OPENROUTER_API_KEY=your_openrouter_api_key_here
+   PORT=3000
+   FRONTEND_ORIGIN=http://localhost:5500
+   CORS_ALLOW_DEV_ALL=0
+   DEBUG_CORS=0
+   MOCK_AI=0
+   ```
+   
+   > **Note**: Get your OpenRouter API key from https://openrouter.ai/keys
+
+4. **Start the backend server**
+   ```bash
+   node index.js
+   # or
+   npm start
+   ```
+   
+   The server will start on `http://localhost:3000`
+
+5. **Open the frontend**
+   - Option 1: Open `index.html` directly in your browser
+   - Option 2: Use VS Code Live Server extension
+   - Option 3: Use any static file server
+
+### Mock Mode (Testing without API key)
+
+To test the chat widget without an API key:
+
+```bash
 cd server
+set MOCK_AI=1
 node index.js
 ```
 
-The assistant will automatically incorporate the new data into responses.
-This repo includes a tiny Node/Express backend under `server/` to power the chat widget.
+This will enable mock mode with basic responses based on the knowledge base.
 
-1. Navigate to the server folder and install dependencies:
-	- Windows CMD:
-	  ```cmd
-	  cd server
-	  npm install
-	  ```
-2. Copy environment example to `.env` and set your OpenAI API key:
-	- Create `server/.env` with `OPENAI_API_KEY=YOUR_KEY_HERE`
-3. Start the server:
-	- Windows CMD:
-	  ```cmd
-	  node index.js
-	  ```
-4. Ensure the chat widget points to your server by checking `API_URL` in `chat-widget.js` (defaults to `http://localhost:3000/api/chat`).
+## 🔧 Configuration
 
-#### Quick test without an API key (Mock Mode)
-If you don’t have an OpenAI key yet, you can run a mock mode that returns helpful canned replies:
+### EmailJS Setup
 
-```cmd
-cd server
-set MOCK_AI=1 && node index.js
+1. Create an account at https://www.emailjs.com/
+2. Configure your service and template
+3. Update `js/config.js`:
+   ```javascript
+   const EMAILJS_USER_ID = 'your_user_id';
+   const EMAILJS_SERVICE_ID = 'your_service_id';
+   const EMAILJS_TEMPLATE_ID = 'your_template_id';
+   ```
+
+### AI Chat Knowledge Base
+
+The chat assistant uses `server/kb.json` as its knowledge base. Update this file with your information:
+
+- **meta**: Contact info, social links, location
+- **bio**: Short and long bio descriptions
+- **skills**: Technical skills organized by category
+- **experience**: Work history and achievements
+- **education**: Academic background
+- **projects**: Detailed project information
+- **interests**: Personal interests
+- **faq**: Frequently asked questions
+
+See `server/kb.template.json` for a template structure.
+
+After updating `kb.json`, restart the backend server to load the new data.
+
+### Chat Widget API URL
+
+The chat widget automatically detects the environment:
+- **Localhost**: Uses `http://localhost:3000/api/chat`
+- **Production**: Uses `https://port-back-pa9x.onrender.com/api/chat`
+
+To override manually, set `window.CHAT_API_URL` before loading `chat-widget.js`:
+```html
+<script>
+  window.CHAT_API_URL = 'https://your-custom-api.com/api/chat';
+</script>
+<script src="chat-widget.js"></script>
 ```
 
-Then visit:
-- Health: http://localhost:3000/api/health
-- Chat (example): POST http://localhost:3000/api/chat with `{ "message": "Tell me about your skills" }`
+## 🌍 Deployment
 
-#### CORS tips (local and production)
-- Local: the backend now accepts any localhost port and also allows file:// (no Origin header). If you’re using Live Server on ports like 5500/5501/5502, it will work out of the box.
-- If you still hit CORS issues locally, you can force-allow all origins by starting with:
+### Backend Deployment (Render)
 
-```cmd
-set CORS_ALLOW_DEV_ALL=1 && node index.js
+1. **Push code to GitHub**
+   ```bash
+   git add .
+   git commit -m "Prepare for deployment"
+   git push origin main
+   ```
+
+2. **Deploy on Render**
+   - Go to https://dashboard.render.com
+   - Create a new Web Service
+   - Connect your GitHub repository
+   - Set root directory to `server`
+   - Build command: `npm install`
+   - Start command: `node index.js`
+
+3. **Configure Environment Variables**
+   In Render dashboard → Environment tab:
+   - `OPENROUTER_API_KEY` = Your OpenRouter API key
+   - `FRONTEND_ORIGIN` = Your Netlify URL (e.g., `https://hamzamussema.netlify.app`)
+   - `PORT` = `3000` (optional, Render auto-assigns)
+   - `MOCK_AI` = `0` (or `1` for mock mode)
+
+4. **Verify Deployment**
+   - Health check: `https://your-app.onrender.com/api/health`
+   - Should return: `{"status":"ok","mock":false}`
+
+### Frontend Deployment (Netlify)
+
+1. **Push code to GitHub** (if not already done)
+
+2. **Deploy on Netlify**
+   - Go to https://app.netlify.com
+   - Click "Add new site" → "Import an existing project"
+   - Connect to GitHub
+   - Select your repository
+   - Build settings:
+     - Build command: (leave empty - static site)
+     - Publish directory: `.` (root directory)
+   - Click "Deploy site"
+
+3. **Update CORS in Render**
+   - After getting your Netlify URL
+   - Update `FRONTEND_ORIGIN` in Render to your Netlify URL
+   - Wait for redeploy (1-2 minutes)
+
+4. **Verify Deployment**
+   - Visit your Netlify URL
+   - Test the chat widget
+   - Check browser console for errors
+
+### Using Render Blueprint (Alternative)
+
+You can also use the included `server/render.yaml`:
+
+1. Push code to GitHub
+2. In Render, create a Blueprint
+3. Render will automatically configure based on `render.yaml`
+
+## 📝 API Endpoints
+
+### Health Check
+```
+GET /api/health
+```
+Returns server status and mock mode status.
+
+### Chat
+```
+POST /api/chat
+Content-Type: application/json
+
+{
+  "message": "Tell me about your skills"
+}
 ```
 
-- Production: set `FRONTEND_ORIGIN` to your live site (e.g., `https://yourdomain.com`) so CORS is restricted appropriately.
+Response:
+```json
+{
+  "reply": "I specialize in full-stack development..."
+}
+```
 
-When deployed, update `API_URL` in `chat-widget.js` to your production endpoint and update CORS origins in `server/index.js` accordingly.
+## 🎨 Customization
 
-### Deploy to Render (one option)
-You can deploy the backend easily on Render.
+### Changing Colors
+Edit CSS variables in `chat-widget.css`:
+```css
+:root {
+  --chat-accent: #7ed957; /* Your accent color */
+  --chat-bg: rgba(17, 17, 17, 0.95);
+  /* ... */
+}
+```
 
-Steps:
-1. Push this repo to GitHub
-2. In Render, create a new Web Service from the `server` folder, or include the included `server/render.yaml` by creating a Blueprint if you prefer.
-3. Set environment variable `OPENAI_API_KEY`
-	- Optional: `MOCK_AI=1` if you want to run without an OpenAI key
-	- Recommended: set `FRONTEND_ORIGIN` to your portfolio domain once live
-4. After deploy, update `API_URL` in `chat-widget.js` to the Render URL (e.g., `https://portfolio-chat-backend.onrender.com/api/chat`)
-5. Add your production site origin to the CORS allowed list in `server/index.js`
+### Modifying Chat Widget
+- **Styles**: `chat-widget.css`
+- **Functionality**: `chat-widget.js`
+- **HTML Structure**: `index.html` (search for `hamza-chat`)
 
-## License
+### Adding Projects
+Update `server/kb.json` → `projects` array with your project details.
+
+## 🐛 Troubleshooting
+
+### Chat Widget Not Working
+
+1. **Check Browser Console** (F12)
+   - Look for CORS errors
+   - Verify API URL is correct
+   - Check network requests
+
+2. **Verify Backend is Running**
+   - Check Render dashboard for service status
+   - Test health endpoint
+   - Check Render logs for errors
+
+3. **Check CORS Settings**
+   - Ensure `FRONTEND_ORIGIN` is set correctly in Render
+   - Should match your Netlify URL exactly (no trailing slash)
+
+4. **Verify API Key**
+   - Check `OPENROUTER_API_KEY` is set in Render
+   - Verify key is valid and active
+
+### Backend Not Responding
+
+1. **Check Render Logs**
+   - Go to Render dashboard → Your service → Logs
+   - Look for startup errors or API errors
+
+2. **Verify Dependencies**
+   - Ensure `package.json` has all dependencies
+   - Check `node_modules` are installed
+
+3. **Environment Variables**
+   - Verify all required env vars are set
+   - Check for typos in variable names
+
+See `TROUBLESHOOTING.md` for more detailed troubleshooting guide.
+
+## 📚 Documentation
+
+- [Deployment Guide](DEPLOYMENT.md) - Detailed deployment instructions
+- [Troubleshooting Guide](TROUBLESHOOTING.md) - Common issues and solutions
+
+## 🤝 Contributing
+
+This is a personal portfolio project. If you find any bugs or have suggestions, feel free to open an issue or submit a pull request.
+
+## 📄 License
+
 © 2022–2025 Hamza Musema. All rights reserved.
+
+## 📧 Contact
+
+- **Email**: hamzamusema26@gmail.com
+- **Phone**: +251940315799
+- **LinkedIn**: [Hamza Musema](https://www.linkedin.com/in/hamza-musema)
+- **GitHub**: [Hamza2679](https://github.com/Hamza2679)
+- **Telegram**: [@The_dreamer1](https://t.me/The_dreamer1)
+- **Portfolio**: https://hamzamussema.netlify.app
+
+## 🙏 Acknowledgments
+
+- OpenRouter for AI API
+- Netlify for hosting
+- Render for backend hosting
+- EmailJS for contact form integration
+- Font Awesome for icons
+- Google Fonts for typography
+
+---
+
+**Made with ❤️ by Hamza Musema**
