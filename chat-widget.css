@@ -1,0 +1,30 @@
+:root{
+	--chat-accent:#7ed957; /* matches your site green */
+	--chat-bg:rgba(17,17,17,0.7);
+	--chat-panel:#ffffff;
+	--chat-text:#111;
+}
+@media (prefers-color-scheme: dark){
+	:root{
+		--chat-panel:rgba(17,17,17,0.6);
+		--chat-text:#e5e7eb;
+	}
+}
+
+#hamza-chat{position:fixed;bottom:24px;right:24px;font-family:Inter,system-ui,Arial,sans-serif;z-index:9999;width:320px}
+#chat-toggle{background:var(--chat-bg);backdrop-filter:blur(8px);color:#fff;padding:10px 16px;border-radius:14px;cursor:pointer;border:1px solid rgba(255,255,255,.12);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+#chat-toggle:hover{outline:2px solid var(--chat-accent)}
+#chat-window{display:none;background:var(--chat-panel);backdrop-filter:blur(12px);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.25);margin-top:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+.chat-open #chat-window{display:block}
+#chat-log{max-height:360px;overflow:auto;padding:12px}
+.message{margin-bottom:10px}
+.message .bubble{display:inline-block;padding:8px 12px;border-radius:12px;max-width:80%}
+.message.user{text-align:right}
+.message.user .bubble{background:#dcf8c6}
+.message.bot .bubble{background:#f8fafc;color:#0f172a}
+#chat-controls{display:flex;gap:8px;padding:8px;border-top:1px solid #eee}
+#chat-input{flex:1;padding:8px;border-radius:6px;border:1px solid #ccc}
+#chat-send{padding:8px 12px;border-radius:6px;border:none;background:var(--chat-accent);color:#111;font-weight:600;cursor:pointer}
+#chat-send:hover{filter:brightness(.95)}
+#chat-clear{padding:8px 10px;border-radius:6px;border:1px solid rgba(0,0,0,.1);background:#fff;color:#111;cursor:pointer}
+#chat-clear:hover{background:#f3f4f6}

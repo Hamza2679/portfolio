@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "owner": "Hamza Mussema Jemal",
+    "title": "Full Stack Developer | Flutter • Node.js • PostgreSQL",
+    "email": "hamzamusema26@gmail.com",
+    "secondary_emails": ["hamzamusema11@gmail.com"],
+    "contact_email": "hamzamusema26@gmail.com",
+    "phone": "+251940315799",
+    "location": "Addis Ababa, Ethiopia",
+    "timezone": "Africa/Addis_Ababa",
+    "languages": ["English", "Amharic", "Oromo", "Arabic"],
+    "availability": { "status": "open", "notes": "Open for remote work and freelancing" },
+    "social": {
+      "github": "https://github.com/Hamza2679",
+      "twitter": "https://twitter.com/musema98871",
+      "telegram": "https://t.me/The_dreamer1",
+      "linkedin": "https://www.linkedin.com/in/hamza-musema",
+      "whatsapp": "https://wa.me/251940315799"
+    }
+  },
+  "bio": {
+    "short": "CS&E student and full‑stack developer building Flutter apps and Node.js/PostgreSQL backends.",
+    "long": "Hi there! I’m Hamza Musema. I’m a Computer Science and Engineering student at Adama Science and Technology University. I love building tech solutions that actually make life easier. I mostly work with Flutter for mobile apps and Node.js with PostgreSQL for backends — I enjoy creating systems that connect everything smoothly from front to back. I’ve worked on several projects like Social Sync (a real‑time university communication platform), an online driving school system with video calls and payments, and a delivery app with live tracking. I’m also into AI, network systems, and exploring IoT technologies like Helium and Mysterium. When I’m not coding, I’m usually watching football, playing it, or checking out science and space movies. Overall, I’m someone who loves learning, building, and turning ideas into something real."
+  },
+  "skills": {
+    "backend": ["Node.js", "Express", "REST APIs", "Socket.IO"],
+    "frontend": ["JavaScript", "HTML", "CSS", "React"],
+    "mobile": ["Flutter", "Dart"],
+    "databases": ["PostgreSQL", "SQL", "MongoDB"],
+    "cloud": ["AWS S3"],
+    "realtime_media": ["Twilio Video"],
+    "other": ["Git", "Agile/Scrum"]
+  },
+  "experience": [
+    {
+      "company": "Sheria Devs",
+      "role": "Community‑based summer training program lecturer",
+      "start": "2025-06",
+      "end": "present",
+      "location": "Remote",
+      "highlights": [
+        "Lectured on website design and development (HTML, CSS, JavaScript)",
+        "Guided trainees through modern web fundamentals and best practices"
+      ],
+      "tech": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "company": "Adama Science and Technology University (ASTU)",
+      "role": "Final year project team leader",
+      "start": "2024-11",
+      "end": "2025-07",
+      "location": "Adama, Ethiopia",
+      "highlights": [
+        "Led ID‑based social platform for university community",
+        "Coordinated team tasks and integrations across modules"
+      ],
+      "tech": ["Node.js", "Flutter", "PostgreSQL"]
+    },
+    {
+      "company": "Websprix IT Solutions",
+      "role": "Software Engineering Intern",
+      "start": "2024-06",
+      "end": "2024-09",
+      "location": "Addis Ababa, Ethiopia",
+      "highlights": [
+        "Built features for a delivery platform using Flutter",
+        "Contributed to a school management application"
+      ],
+      "tech": ["Flutter", "Dart"]
+    },
+    {
+      "company": "XOKA IT Solutions",
+      "role": "Software Engineering Intern",
+      "start": "2023-06",
+      "end": "2023-09",
+      "location": "Addis Ababa, Ethiopia",
+      "highlights": [
+        "Developed a local web‑based project management system",
+        "Contributed to a web‑based e‑commerce platform"
+      ],
+      "tech": ["JavaScript", "Node.js", "PostgreSQL"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Adama Science and Technology University",
+      "degree": "BSc, Computer Science and Engineering",
+      "period": "2019 – 2025",
+      "honors": "Very Great Distinction"
+    }
+  ],
+  "projects": [
+    {
+      "id": "social-sync",
+      "name": "Social Sync",
+      "category": "web",
+      "summary": "Real‑time university communication platform for posts and messaging.",
+      "details": "A platform meant to replace existing social tools for university communication. Built with Node.js backend and Flutter frontend. Features real‑time messaging (Socket.IO), group posts, and admin panels.",
+      "tech": ["Node.js", "Flutter", "Socket.IO", "PostgreSQL"],
+      "status": "wip"
+    },
+    {
+      "id": "time-delivery-service",
+      "name": "Time Delivery Service",
+      "category": "mobile",
+      "summary": "Delivery app with order history, payment flows, and operations tools.",
+      "details": "A delivery app with order history pages, payment flows (pay now / pay after), and a call center plan. Frontend in Flutter; backend in Node.js with PostgreSQL.",
+      "tech": ["Flutter", "Dart", "Node.js", "PostgreSQL"],
+      "status": "wip"
+    },
+    {
+      "id": "driving-school-platform",
+      "name": "Online Driving School Platform",
+      "category": "web",
+      "summary": "Enrollment, payments, video calls and quizzes for driving schools.",
+      "details": "Includes admin auth, payment proof uploads to AWS S3, Twilio video calls for teacher‑student sessions, quizzes and progress tracking.",
+      "tech": ["Node.js", "PostgreSQL", "Twilio Video", "AWS S3"],
+      "status": "wip"
+    }
+  ],
+  "interests": ["AI", "IoT", "Helium", "Mysterium", "Networking", "Football", "Science & space movies"],
+  "faq": [
+    {
+      "q": "How can I contact you?",
+      "a": "Email me at hamzamusema26@gmail.com or message me on Telegram: https://t.me/The_dreamer1"
+    },
+    {
+      "q": "What do you specialize in?",
+      "a": "Flutter for mobile apps and Node.js + PostgreSQL for robust backends, including real‑time features with Socket.IO and media with Twilio."
+    }
+  ]
+}

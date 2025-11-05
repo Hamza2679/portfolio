@@ -17,6 +17,8 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Chat widget styles -->
+    <link rel="stylesheet" href="chat-widget.css">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./img/personalbf.jpg" sizes="32x32">
@@ -857,7 +859,7 @@
                     <p>&copy; 2022 Hamza Musema. All rights reserved.</p>
                 </div>
                 <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/hamza-musema-bb2b34230/" target="_blank" aria-label="LinkedIn">
+                    <a href="https://www.linksedin.com/in/hamza-musema-bb2b34230/" target="_blank" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
                     <a href="https://github.com/Hamza2679" target="_blank" aria-label="GitHub">
@@ -882,11 +884,36 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+        <!-- Chat widget markup -->
+            <div id="hamza-chat" class="chat-closed" aria-live="polite">
+                    <button id="chat-toggle" aria-expanded="false" aria-controls="chat-window" title="Chat with Hamza">Chat with Hamza's mini AI</button>
+                    <div id="chat-window" role="dialog" aria-label="Chat window">
+                        <div id="chat-log" aria-live="polite"></div>
+                        <div id="chat-controls">
+                            <input id="chat-input" placeholder="Ask about my projects, skills or contact..." aria-label="Type your message" />
+                            <button id="chat-clear" aria-label="Clear conversation" title="Clear conversation">Clear</button>
+                            <button id="chat-send" aria-label="Send message">Send</button>
+                        </div>
+                    </div>
+            </div>
+
     <!-- JavaScript -->
     <!-- Use the recommended EmailJS v4 browser SDK -->
         <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
                 <script src="js/config.js"></script>
                 <script src="js/main.js"></script>
+                <!-- Chat widget script -->
+                                <script>
+                                    // Optional: override chat API via URL param ?api=...
+                                    (function(){
+                                        try{
+                                            var p = new URLSearchParams(window.location.search);
+                                            var api = p.get('api');
+                                            if (api) window.CHAT_API_URL = api;
+                                        }catch(e){}
+                                    })();
+                                </script>
+                <script src="chat-widget.js"></script>
 
                 <!-- Contact form: EmailJS handler -->
                 <script>
@@ -1128,4 +1155,11 @@
         navBtns[0].click();
     });
     </script>
+        <script>
+            // Keep footer year current
+            (function(){
+                var yEl = document.getElementById('footerYear');
+                if (yEl) yEl.textContent = new Date().getFullYear();
+            })();
+        </script>
 </html>

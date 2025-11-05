@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "owner": "Your Full Name",
+    "title": "Full Stack Developer | Backend | Mobile | React",
+    "email": "your.primary@email.com",
+    "contact_email": "your.primary@email.com",
+    "phone": "+251900000000",
+    "location": "City, Country",
+    "timezone": "Africa/Addis_Ababa",
+    "languages": ["English"],
+    "availability": {
+      "status": "open",
+      "notes": "Open for remote work and freelancing"
+    },
+    "social": {
+      "website": "https://yourdomain.com",
+      "github": "https://github.com/yourhandle",
+      "linkedin": "https://www.linkedin.com/in/your-handle/",
+      "twitter": "https://twitter.com/yourhandle",
+      "telegram": "https://t.me/yourhandle",
+      "whatsapp": "https://wa.me/XXXXXXXXXXX",
+      "instagram": "https://instagram.com/yourhandle",
+      "facebook": "https://facebook.com/yourhandle",
+      "youtube": "https://youtube.com/@yourhandle",
+      "medium": "https://medium.com/@yourhandle"
+    }
+  },
+  "bio": {
+    "short": "1–2 line summary about you.",
+    "long": "A detailed paragraph (or two) describing your background, strengths, and what you enjoy building."
+  },
+  "skills": {
+    "backend": ["Node.js", "Express", "REST APIs", "Microservices"],
+    "frontend": ["React", "JavaScript", "HTML", "CSS"],
+    "mobile": ["Flutter", "Dart"],
+    "databases": ["PostgreSQL", "MongoDB", "SQL"],
+    "devops": ["Docker", "CI/CD"],
+    "cloud": ["Render", "Railway", "Vercel", "Azure"],
+    "other": ["Git", "Agile/Scrum"]
+  },
+  "experience": [
+    {
+      "company": "Company or Client",
+      "role": "Role Title",
+      "start": "2024-01",
+      "end": "present",
+      "location": "Remote",
+      "highlights": [
+        "Key achievement or responsibility",
+        "Another result with measurable impact"
+      ],
+      "tech": ["Node.js", "PostgreSQL"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University Name",
+      "degree": "Degree | Field of Study",
+      "period": "2019 – 2023",
+      "honors": "Very Great Distinction"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Certification Name",
+      "issuer": "Issuer",
+      "year": 2025,
+      "url": "https://verify.example.com/cert"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Project Name",
+      "category": "backend|web|flutter|mobile|data",
+      "summary": "1–2 lines describing the project and its impact.",
+      "tech": ["Node.js", "Express", "PostgreSQL"],
+      "links": {
+        "demo": "https://demo.example.com",
+        "docs": "https://docs.example.com",
+        "repo": "https://github.com/yourhandle/repo"
+      },
+      "status": "live|wip|archived",
+      "year": 2025
+    }
+  ],
+  "testimonials": [
+    {
+      "author": "Client Name",
+      "role": "Role, Company",
+      "quote": "Short testimonial text."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What services do you offer?",
+      "a": "Backend APIs, mobile apps with Flutter, React frontends, database design, and integrations."
+    }
+  ]
+}

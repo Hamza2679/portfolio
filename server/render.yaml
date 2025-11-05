@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: portfolio-chat-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node index.js
+    autoDeploy: true
+    plan: free
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
+    healthCheckPath: /api/health

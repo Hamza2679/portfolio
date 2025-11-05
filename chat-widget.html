@@ -1,0 +1,16 @@
+<!-- Chat widget markup: include near end of body -->
+<link rel="stylesheet" href="chat-widget.css">
+
+<div id="hamza-chat" class="chat-closed" aria-live="polite">
+  <button id="chat-toggle" aria-expanded="false" aria-controls="chat-window" title="Chat with Hamza">Chat with Hamza</button>
+  <div id="chat-window" role="dialog" aria-label="Chat window">
+    <div id="chat-log" aria-live="polite"></div>
+    <div id="chat-controls">
+      <input id="chat-input" placeholder="Ask about my projects, skills or contact..." aria-label="Type your message" />
+      <button id="chat-clear" aria-label="Clear conversation" title="Clear conversation">Clear</button>
+      <button id="chat-send" aria-label="Send message">Send</button>
+    </div>
+  </div>
+</div>
+
+<script src="chat-widget.js"></script>
