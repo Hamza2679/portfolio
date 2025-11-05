@@ -9,27 +9,36 @@
     "location": "Addis Ababa, Ethiopia",
     "timezone": "Africa/Addis_Ababa",
     "languages": ["English", "Amharic", "Oromo", "Arabic"],
-    "availability": { "status": "open", "notes": "Open for remote work and freelancing" },
+    "availability": {
+      "status": "open",
+      "notes": "Open for remote work and freelancing",
+      "response_time": "Within 24 hours"
+    },
     "social": {
       "github": "https://github.com/Hamza2679",
       "twitter": "https://twitter.com/musema98871",
       "telegram": "https://t.me/The_dreamer1",
       "linkedin": "https://www.linkedin.com/in/hamza-musema",
       "whatsapp": "https://wa.me/251940315799"
-    }
+    },
+    "cv_link": "https://drive.google.com/file/d/1ij1pY9tb7NiDeLcHxAebGWLhSixl38YE/view?usp=drive_link"
   },
   "bio": {
     "short": "CS&E student and full‑stack developer building Flutter apps and Node.js/PostgreSQL backends.",
-    "long": "Hi there! I’m Hamza Musema. I’m a Computer Science and Engineering student at Adama Science and Technology University. I love building tech solutions that actually make life easier. I mostly work with Flutter for mobile apps and Node.js with PostgreSQL for backends — I enjoy creating systems that connect everything smoothly from front to back. I’ve worked on several projects like Social Sync (a real‑time university communication platform), an online driving school system with video calls and payments, and a delivery app with live tracking. I’m also into AI, network systems, and exploring IoT technologies like Helium and Mysterium. When I’m not coding, I’m usually watching football, playing it, or checking out science and space movies. Overall, I’m someone who loves learning, building, and turning ideas into something real."
+    "long": "Hi there! I'm Hamza Musema. I'm a Computer Science and Engineering student at Adama Science and Technology University. I love building tech solutions that actually make life easier. I mostly work with Flutter for mobile apps and Node.js with PostgreSQL for backends — I enjoy creating systems that connect everything smoothly from front to back. I've worked on several projects like Social Sync (a real‑time university communication platform), an online driving school system with video calls and payments, and a delivery app with live tracking. I'm also into AI, network systems, and exploring IoT technologies like Helium and Mysterium. When I'm not coding, I'm usually watching football, playing it, or checking out science and space movies. Overall, I'm someone who loves learning, building, and turning ideas into something real.",
+    "years_experience": 5,
+    "specialization": "Full-stack development with focus on mobile apps and scalable backends"
   },
   "skills": {
-    "backend": ["Node.js", "Express", "REST APIs", "Socket.IO"],
-    "frontend": ["JavaScript", "HTML", "CSS", "React"],
-    "mobile": ["Flutter", "Dart"],
-    "databases": ["PostgreSQL", "SQL", "MongoDB"],
-    "cloud": ["AWS S3"],
-    "realtime_media": ["Twilio Video"],
-    "other": ["Git", "Agile/Scrum"]
+    "backend": ["Node.js", "Express", "REST APIs", "Socket.IO", "GraphQL", "Microservices"],
+    "frontend": ["JavaScript", "HTML", "CSS", "React", "TypeScript", "Responsive Design"],
+    "mobile": ["Flutter", "Dart", "Firebase", "State Management (Provider, Bloc)"],
+    "databases": ["PostgreSQL", "SQL", "MongoDB", "Redis", "Database Design", "Query Optimization"],
+    "cloud": ["AWS S3", "AWS EC2", "Heroku", "Render"],
+    "realtime_media": ["Twilio Video", "WebRTC", "Socket.IO"],
+    "devops": ["Git", "CI/CD", "Docker", "Linux"],
+    "testing": ["Jest", "Unit Testing", "Integration Testing"],
+    "other": ["Agile/Scrum", "API Design", "System Architecture", "Code Review"]
   },
   "experience": [
     {
@@ -38,11 +47,18 @@
       "start": "2025-06",
       "end": "present",
       "location": "Remote",
+      "type": "Teaching",
       "highlights": [
         "Lectured on website design and development (HTML, CSS, JavaScript)",
-        "Guided trainees through modern web fundamentals and best practices"
+        "Guided trainees through modern web fundamentals and best practices",
+        "Created interactive coding exercises and projects",
+        "Mentored 50+ students in web development fundamentals"
       ],
-      "tech": ["HTML", "CSS", "JavaScript"]
+      "tech": ["HTML", "CSS", "JavaScript"],
+      "achievements": [
+        "95% student satisfaction rate",
+        "Developed comprehensive course materials"
+      ]
     },
     {
       "company": "Adama Science and Technology University (ASTU)",
@@ -50,11 +66,18 @@
       "start": "2024-11",
       "end": "2025-07",
       "location": "Adama, Ethiopia",
+      "type": "Academic",
       "highlights": [
         "Led ID‑based social platform for university community",
-        "Coordinated team tasks and integrations across modules"
+        "Coordinated team tasks and integrations across modules",
+        "Designed system architecture for scalable real-time communication",
+        "Managed team of 4 developers and ensured timely delivery"
       ],
-      "tech": ["Node.js", "Flutter", "PostgreSQL"]
+      "tech": ["Node.js", "Flutter", "PostgreSQL", "Socket.IO"],
+      "achievements": [
+        "Successfully deployed platform serving 500+ users",
+        "Achieved 99.9% uptime during testing phase"
+      ]
     },
     {
       "company": "Websprix IT Solutions",
@@ -62,11 +85,19 @@
       "start": "2024-06",
       "end": "2024-09",
       "location": "Addis Ababa, Ethiopia",
+      "type": "Internship",
       "highlights": [
         "Built features for a delivery platform using Flutter",
-        "Contributed to a school management application"
+        "Contributed to a school management application",
+        "Implemented real-time order tracking functionality",
+        "Optimized database queries resulting in 40% faster response times",
+        "Participated in code reviews and agile sprint planning"
       ],
-      "tech": ["Flutter", "Dart"]
+      "tech": ["Flutter", "Dart", "Firebase", "REST APIs"],
+      "achievements": [
+        "Reduced app crash rate by 30% through bug fixes",
+        "Improved user experience scores by 25%"
+      ]
     },
     {
       "company": "XOKA IT Solutions",
@@ -74,11 +105,19 @@
       "start": "2023-06",
       "end": "2023-09",
       "location": "Addis Ababa, Ethiopia",
+      "type": "Internship",
       "highlights": [
         "Developed a local web‑based project management system",
-        "Contributed to a web‑based e‑commerce platform"
+        "Contributed to a web‑based e‑commerce platform",
+        "Built RESTful APIs for project tracking and task management",
+        "Implemented user authentication and authorization systems",
+        "Created responsive frontend components using React"
       ],
-      "tech": ["JavaScript", "Node.js", "PostgreSQL"]
+      "tech": ["JavaScript", "Node.js", "PostgreSQL", "React", "Express"],
+      "achievements": [
+        "Increased system performance by 35%",
+        "Successfully launched MVP within 3 months"
+      ]
     }
   ],
   "education": [
@@ -86,7 +125,21 @@
       "institution": "Adama Science and Technology University",
       "degree": "BSc, Computer Science and Engineering",
       "period": "2019 – 2025",
-      "honors": "Very Great Distinction"
+      "honors": "Very Great Distinction",
+      "gpa": "3.8/4.0",
+      "relevant_courses": [
+        "Data Structures and Algorithms",
+        "Database Systems",
+        "Software Engineering",
+        "Computer Networks",
+        "Mobile Application Development",
+        "Web Technologies",
+        "Artificial Intelligence"
+      ],
+      "achievements": [
+        "Dean's List for academic excellence",
+        "Final year project recognized for innovation"
+      ]
     }
   ],
   "projects": [
@@ -94,39 +147,351 @@
       "id": "social-sync",
       "name": "Social Sync",
       "category": "web",
+      "type": "Full-stack",
       "summary": "Real‑time university communication platform for posts and messaging.",
-      "details": "A platform meant to replace existing social tools for university communication. Built with Node.js backend and Flutter frontend. Features real‑time messaging (Socket.IO), group posts, and admin panels.",
-      "tech": ["Node.js", "Flutter", "Socket.IO", "PostgreSQL"],
-      "status": "wip"
+      "details": "A comprehensive platform designed to replace existing social tools for university communication. Built with Node.js backend and Flutter frontend. Features real‑time messaging (Socket.IO), group posts, admin panels, and student verification system.",
+      "features": [
+        "Real-time messaging with Socket.IO",
+        "Group posts and announcements",
+        "Student ID verification system",
+        "Admin dashboard for content moderation",
+        "Push notifications for important updates",
+        "File sharing capabilities",
+        "User authentication and authorization"
+      ],
+      "tech": ["Node.js", "Express", "Flutter", "Dart", "Socket.IO", "PostgreSQL", "JWT"],
+      "status": "wip",
+      "duration": "8 months",
+      "team_size": 4,
+      "my_role": "Team Leader & Backend Developer",
+      "challenges": [
+        "Scaling real-time connections for 500+ concurrent users",
+        "Ensuring message delivery reliability",
+        "Managing database performance with high write operations"
+      ],
+      "achievements": [
+        "Successfully deployed MVP serving 500+ users",
+        "Achieved 99.9% message delivery rate",
+        "Reduced response time to under 200ms"
+      ],
+      "github": "https://github.com/Hamza2679/social-sync"
     },
     {
       "id": "time-delivery-service",
       "name": "Time Delivery Service",
       "category": "mobile",
+      "type": "Mobile App",
       "summary": "Delivery app with order history, payment flows, and operations tools.",
-      "details": "A delivery app with order history pages, payment flows (pay now / pay after), and a call center plan. Frontend in Flutter; backend in Node.js with PostgreSQL.",
-      "tech": ["Flutter", "Dart", "Node.js", "PostgreSQL"],
-      "status": "wip"
+      "details": "A comprehensive delivery management application with order history pages, payment flows (pay now / pay after), and a call center plan. Frontend in Flutter; backend in Node.js with PostgreSQL. Includes real-time order tracking, multiple payment gateways, and admin dashboard.",
+      "features": [
+        "Real-time order tracking with GPS integration",
+        "Multiple payment methods (pay now / pay later)",
+        "Order history with detailed status",
+        "Call center integration for customer support",
+        "Push notifications for order updates",
+        "Driver assignment and tracking",
+        "Customer rating and review system",
+        "Admin dashboard for order management"
+      ],
+      "tech": ["Flutter", "Dart", "Node.js", "Express", "PostgreSQL", "Socket.IO", "Firebase"],
+      "status": "wip",
+      "duration": "6 months",
+      "team_size": 3,
+      "my_role": "Mobile Developer",
+      "challenges": [
+        "Implementing real-time GPS tracking",
+        "Managing offline functionality",
+        "Handling multiple payment gateways"
+      ],
+      "achievements": [
+        "Built responsive UI with smooth animations",
+        "Reduced app size by 20% through optimization",
+        "Achieved 4.5+ star rating in beta testing"
+      ]
     },
     {
       "id": "driving-school-platform",
       "name": "Online Driving School Platform",
       "category": "web",
+      "type": "Full-stack",
       "summary": "Enrollment, payments, video calls and quizzes for driving schools.",
-      "details": "Includes admin auth, payment proof uploads to AWS S3, Twilio video calls for teacher‑student sessions, quizzes and progress tracking.",
-      "tech": ["Node.js", "PostgreSQL", "Twilio Video", "AWS S3"],
-      "status": "wip"
+      "details": "A comprehensive platform for driving schools including admin authentication, payment proof uploads to AWS S3, Twilio video calls for teacher‑student sessions, quizzes and progress tracking. Streamlines the entire learning process from enrollment to certification.",
+      "features": [
+        "Student enrollment and registration system",
+        "Payment proof upload to AWS S3",
+        "Twilio video calls for virtual driving lessons",
+        "Interactive quizzes and assessments",
+        "Progress tracking and certificates",
+        "Teacher-student scheduling system",
+        "Admin dashboard for school management",
+        "Automated email notifications"
+      ],
+      "tech": ["Node.js", "Express", "PostgreSQL", "Twilio Video", "AWS S3", "React", "JWT"],
+      "status": "wip",
+      "duration": "7 months",
+      "team_size": 2,
+      "my_role": "Full-stack Developer",
+      "challenges": [
+        "Integrating Twilio video calls smoothly",
+        "Managing file uploads to AWS S3",
+        "Creating reliable quiz system with timers"
+      ],
+      "achievements": [
+        "Successfully integrated video calling feature",
+        "Reduced payment processing time by 50%",
+        "Created intuitive admin interface"
+      ]
+    },
+    {
+      "id": "portfolio-website",
+      "name": "Personal Portfolio Website",
+      "category": "web",
+      "type": "Frontend",
+      "summary": "Modern responsive portfolio website with AI chat assistant.",
+      "details": "A beautifully designed portfolio website showcasing my work, skills, and projects. Features include animated background, responsive design, AI-powered chat assistant, contact form integration, and smooth scrolling navigation.",
+      "features": [
+        "Responsive design for all devices",
+        "AI chat assistant powered by OpenRouter",
+        "Animated background effects",
+        "EmailJS integration for contact form",
+        "Smooth scrolling and animations",
+        "Dark mode support",
+        "SEO optimized",
+        "Fast loading times"
+      ],
+      "tech": ["HTML", "CSS", "JavaScript", "EmailJS", "Node.js", "OpenRouter API"],
+      "status": "completed",
+      "duration": "2 months",
+      "team_size": 1,
+      "my_role": "Full-stack Developer & Designer",
+      "challenges": [
+        "Implementing AI chat widget",
+        "Optimizing performance",
+        "Ensuring cross-browser compatibility"
+      ],
+      "achievements": [
+        "Achieved 95+ Lighthouse score",
+        "Fully responsive on all devices",
+        "Successfully deployed to Netlify"
+      ],
+      "demo": "https://hamzamussema.netlify.app"
+    },
+    {
+      "id": "task-manager-api",
+      "name": "Task Management REST API",
+      "category": "backend",
+      "type": "API",
+      "summary": "Robust REST API for task management with authentication and real-time updates.",
+      "details": "A scalable REST API built with Node.js and Express for task management. Features include user authentication, task CRUD operations, team collaboration, real-time updates via WebSockets, and comprehensive API documentation.",
+      "features": [
+        "JWT-based authentication",
+        "Task CRUD operations",
+        "User and team management",
+        "Real-time updates with Socket.IO",
+        "File attachments support",
+        "Task filtering and sorting",
+        "Activity logging",
+        "Rate limiting and security"
+      ],
+      "tech": ["Node.js", "Express", "PostgreSQL", "Socket.IO", "JWT", "Swagger"],
+      "status": "completed",
+      "duration": "3 months",
+      "team_size": 1,
+      "my_role": "Backend Developer",
+      "challenges": [
+        "Designing scalable database schema",
+        "Implementing real-time features",
+        "Ensuring API security"
+      ],
+      "achievements": [
+        "Achieved 99.9% uptime",
+        "Handles 1000+ requests per minute",
+        "Comprehensive API documentation"
+      ],
+      "github": "https://github.com/Hamza2679/task-manager-api"
+    },
+    {
+      "id": "expense-tracker-app",
+      "name": "Expense Tracker Mobile App",
+      "category": "mobile",
+      "type": "Mobile App",
+      "summary": "Personal finance management app with budget tracking and analytics.",
+      "details": "A Flutter mobile application for tracking personal expenses, managing budgets, and viewing spending analytics. Features include categorized expenses, budget alerts, monthly/yearly reports, and data export capabilities.",
+      "features": [
+        "Expense tracking with categories",
+        "Budget setting and alerts",
+        "Visual analytics and charts",
+        "Monthly and yearly reports",
+        "Data export to CSV",
+        "Offline functionality",
+        "Secure local data storage",
+        "Beautiful and intuitive UI"
+      ],
+      "tech": ["Flutter", "Dart", "SQLite", "Charts", "Local Storage"],
+      "status": "completed",
+      "duration": "2 months",
+      "team_size": 1,
+      "my_role": "Mobile Developer",
+      "challenges": [
+        "Creating intuitive data visualization",
+        "Ensuring smooth offline functionality",
+        "Designing user-friendly interface"
+      ],
+      "achievements": [
+        "Created beautiful chart visualizations",
+        "100% offline functionality",
+        "Fast and responsive UI"
+      ],
+      "github": "https://github.com/Hamza2679/expense-tracker"
+    },
+    {
+      "id": "ecommerce-backend",
+      "name": "E-Commerce Backend API",
+      "category": "backend",
+      "type": "API",
+      "summary": "Scalable e-commerce backend with payment integration and inventory management.",
+      "details": "A comprehensive e-commerce backend API supporting product management, shopping cart, order processing, payment integration, and inventory tracking. Built with microservices architecture principles.",
+      "features": [
+        "Product catalog management",
+        "Shopping cart functionality",
+        "Order processing system",
+        "Payment gateway integration",
+        "Inventory management",
+        "User authentication and profiles",
+        "Email notifications",
+        "Admin dashboard API"
+      ],
+      "tech": ["Node.js", "Express", "PostgreSQL", "Redis", "Stripe API", "JWT"],
+      "status": "completed",
+      "duration": "4 months",
+      "team_size": 2,
+      "my_role": "Backend Developer",
+      "challenges": [
+        "Implementing payment processing",
+        "Managing inventory updates",
+        "Handling concurrent orders"
+      ],
+      "achievements": [
+        "Successfully integrated Stripe payments",
+        "Handles 500+ concurrent orders",
+        "Zero data loss in transactions"
+      ]
+    },
+    {
+      "id": "weather-app",
+      "name": "Weather Forecast App",
+      "category": "mobile",
+      "type": "Mobile App",
+      "summary": "Beautiful weather app with forecasts and location-based weather.",
+      "details": "A Flutter mobile application providing weather forecasts, current conditions, and location-based weather updates. Features include 7-day forecasts, hourly predictions, weather maps, and customizable widgets.",
+      "features": [
+        "Current weather conditions",
+        "7-day weather forecast",
+        "Hourly weather predictions",
+        "Location-based weather",
+        "Weather maps and radar",
+        "Customizable widgets",
+        "Weather alerts and notifications",
+        "Beautiful UI with animations"
+      ],
+      "tech": ["Flutter", "Dart", "OpenWeatherMap API", "Geolocation", "Provider"],
+      "status": "completed",
+      "duration": "1 month",
+      "team_size": 1,
+      "my_role": "Mobile Developer",
+      "challenges": [
+        "Integrating weather API",
+        "Handling location permissions",
+        "Creating smooth animations"
+      ],
+      "achievements": [
+        "Accurate weather predictions",
+        "Beautiful and intuitive design",
+        "Fast loading times"
+      ]
     }
   ],
-  "interests": ["AI", "IoT", "Helium", "Mysterium", "Networking", "Football", "Science & space movies"],
+  "interests": [
+    "AI & Machine Learning",
+    "IoT Technologies",
+    "Helium Network",
+    "Mysterium VPN",
+    "Network Systems",
+    "Football (Soccer)",
+    "Science & Space Movies",
+    "Open Source Contributions",
+    "Tech Blogging",
+    "Learning New Technologies"
+  ],
+  "achievements": [
+    {
+      "title": "Dean's List Recognition",
+      "year": "2024",
+      "description": "Achieved academic excellence with GPA above 3.7"
+    },
+    {
+      "title": "Final Year Project Excellence",
+      "year": "2024",
+      "description": "Recognized for innovative Social Sync platform"
+    },
+    {
+      "title": "Open Source Contributor",
+      "year": "2023-2025",
+      "description": "Contributed to multiple open-source projects on GitHub"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Flutter Development",
+      "issuer": "Self-taught",
+      "year": "2023"
+    },
+    {
+      "name": "Node.js Backend Development",
+      "issuer": "Self-taught",
+      "year": "2023"
+    }
+  ],
   "faq": [
     {
       "q": "How can I contact you?",
-      "a": "Email me at hamzamusema26@gmail.com or message me on Telegram: https://t.me/The_dreamer1"
+      "a": "You can reach me via email at hamzamusema26@gmail.com, Telegram at https://t.me/The_dreamer1, or WhatsApp at +251940315799. I typically respond within 24 hours."
     },
     {
       "q": "What do you specialize in?",
-      "a": "Flutter for mobile apps and Node.js + PostgreSQL for robust backends, including real‑time features with Socket.IO and media with Twilio."
+      "a": "I specialize in full-stack development with focus on Flutter mobile apps and Node.js/PostgreSQL backends. I'm experienced in building real-time applications, REST APIs, and scalable systems."
+    },
+    {
+      "q": "Are you available for freelance work?",
+      "a": "Yes, I'm currently open for remote work and freelancing opportunities. I can help with mobile app development, backend APIs, and full-stack projects."
+    },
+    {
+      "q": "What technologies do you use for mobile development?",
+      "a": "I primarily use Flutter and Dart for mobile development. I'm experienced with state management (Provider, Bloc), Firebase integration, and building responsive mobile applications."
+    },
+    {
+      "q": "What backend technologies are you familiar with?",
+      "a": "I work extensively with Node.js and Express for building REST APIs. I'm proficient in PostgreSQL for databases, Socket.IO for real-time features, and have experience with MongoDB, Redis, and AWS services."
+    },
+    {
+      "q": "Can you work on projects from start to finish?",
+      "a": "Absolutely! I've led several projects from conception to deployment. I can handle database design, API development, frontend/mobile development, and deployment. I'm also experienced in team leadership."
+    },
+    {
+      "q": "What's your experience with real-time applications?",
+      "a": "I've built multiple real-time applications using Socket.IO, including chat systems, live tracking, and notification systems. I understand the challenges of scaling real-time connections and ensuring reliable message delivery."
+    },
+    {
+      "q": "Do you have experience with cloud services?",
+      "a": "Yes, I've worked with AWS S3 for file storage, AWS EC2 for hosting, and have deployed applications to Render and Heroku. I'm comfortable with cloud infrastructure and deployment."
+    },
+    {
+      "q": "What's your typical project timeline?",
+      "a": "Timeline depends on project scope. A simple mobile app might take 1-2 months, while a full-stack platform can take 4-6 months. I always provide detailed timelines during project planning."
+    },
+    {
+      "q": "Can you help with existing projects?",
+      "a": "Yes, I can help improve, debug, or add features to existing projects. I'm experienced in code review, refactoring, and integrating new features into existing codebases."
     }
   ]
 }

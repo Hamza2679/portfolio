@@ -3,6 +3,7 @@
   // 1. DOM element selection
   const widget = document.getElementById('hamza-chat');
   const toggle = document.getElementById('chat-toggle');
+  const chatClose = document.getElementById('chat-close');
   const chatLog = document.getElementById('chat-log');
   const input = document.getElementById('chat-input');
   const sendBtn = document.getElementById('chat-send');
@@ -19,6 +20,14 @@
   const STORAGE_KEY = 'hamza_chat_history_v1';
 
   if (!widget || !toggle || !chatLog || !input || !sendBtn) return;
+
+  // Close button functionality
+  if (chatClose) {
+    chatClose.addEventListener('click', () => {
+      widget.classList.remove('chat-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  }
 
   // Helper functions
   function escapeHtml(text) {
@@ -42,13 +51,14 @@
     return safe;
   }
 
-  function appendMessage(who, text) {
+  function appendMessage(who, text, isThinking = false) {
     const msg = document.createElement('div');
-    msg.className = 'message ' + (who === 'user' ? 'user' : 'bot');
+    msg.className = 'message ' + (who === 'user' ? 'user' : 'bot') + (isThinking ? ' thinking' : '');
     const content = linkifyAndFormat(text);
     msg.innerHTML = `<div class="bubble">${content}</div>`;
     chatLog.appendChild(msg);
     chatLog.scrollTop = chatLog.scrollHeight;
+    return msg;
   }
 
   function loadHistory() {
@@ -106,8 +116,8 @@
     
     // Show thinking indicator
     const thinkingMsg = document.createElement('div');
-    thinkingMsg.className = 'message bot';
-    thinkingMsg.innerHTML = '<div class="bubble">Thinking...</div>';
+    thinkingMsg.className = 'message bot thinking';
+    thinkingMsg.innerHTML = '<div class="bubble">Thinking</div>';
     chatLog.appendChild(thinkingMsg);
     chatLog.scrollTop = chatLog.scrollHeight;
 
@@ -125,13 +135,35 @@
       if (!resp.ok) {
         const bodyText = await resp.text().catch(()=>'');
         console.error('[chat] HTTP error', resp.status, bodyText);
-        let errorMsg = `Sorry, I couldn't process your request.`;
+        let errorMsg = `Sorry, I couldn't process your request (Status: ${resp.status}).`;
+        
+        // Try to parse error details
+        let errorDetail = '';
+        try {
+          const errorData = JSON.parse(bodyText);
+          errorDetail = errorData.error || errorData.detail || '';
+          if (errorDetail) {
+            console.error('[chat] Error details:', errorDetail);
+          }
+        } catch (e) {
+          // Not JSON, use raw text
+          if (bodyText) {
+            errorDetail = bodyText.substring(0, 100);
+          }
+        }
+        
         if (resp.status === 500) {
-          errorMsg = 'Server error. Please try again later or check if the backend is running.';
+          if (errorDetail.includes('CORS') || errorDetail.includes('cors')) {
+            errorMsg = 'CORS error: Backend needs FRONTEND_ORIGIN configured. Please check server settings.';
+          } else {
+            errorMsg = `Server error: ${errorDetail || 'Please try again later or check if the backend is running.'}`;
+          }
         } else if (resp.status === 404) {
           errorMsg = 'API endpoint not found. Please check the server configuration.';
         } else if (resp.status === 503) {
           errorMsg = 'Service temporarily unavailable. Please try again in a moment.';
+        } else if (resp.status === 0 || resp.status === undefined) {
+          errorMsg = 'Network error: Could not connect to backend. Check CORS settings or backend URL.';
         }
         appendMessage('bot', errorMsg);
         return;

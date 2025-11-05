@@ -17,16 +17,33 @@ const DEBUG_CORS = process.env.DEBUG_CORS === '1';
 const corsOptions = {
   origin: (origin, callback) => {
     if (DEBUG_CORS) console.log('[CORS] request origin:', origin);
-    // Allow no-origin (curl, file://)
+    // Allow no-origin (curl, file://, Postman)
     if (!origin) return callback(null, true);
+    
+    // Allow all in dev mode if explicitly enabled
     if (CORS_ALLOW_DEV_ALL) return callback(null, true);
+    
+    // Build allow list
     const allowList = [
       FRONTEND_ORIGIN,
       'http://localhost',
-      'http://127.0.0.1'
+      'http://127.0.0.1',
+      'https://localhost' // for local HTTPS testing
     ].filter(Boolean);
+    
+    // Check if origin matches any allowed base
     const allowed = allowList.some(base => origin.startsWith(base));
-    if (allowed) return callback(null, true);
+    
+    if (allowed) {
+      if (DEBUG_CORS) console.log('[CORS] Allowed origin:', origin);
+      return callback(null, true);
+    }
+    
+    // Log blocked origin for debugging
+    console.warn('[CORS] Blocked origin:', origin);
+    console.warn('[CORS] Allowed origins:', allowList);
+    console.warn('[CORS] To allow this origin, set FRONTEND_ORIGIN=' + origin.split('/')[0] + '//' + origin.split('/')[2]);
+    
     return callback(new Error('Not allowed by CORS: ' + origin));
   },
   credentials: false,
